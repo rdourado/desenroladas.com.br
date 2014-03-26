@@ -1,0 +1,51 @@
+@import "compass"
+
+// Fonts
+
+@import url("http://fonts.googleapis.com/css?family=Playfair+Display+SC|Titillium+Web:300")
+
+$font1: "Playfair Display SC", sans-serif
+$font2: "Titillium Web", sans-serif
+
+// Reset
+
++global-reset
+
+hr
+	display: none
+img
+	vertical-align: bottom
+a
+	text-decoration: none
+
+// Layout
+
+body
+	margin: 0 auto
+	width: 960px
+
+// Header
+
+.logo
+	padding: 24px 0 40px 35px
+
+.nav-main
+	border-top: 1px solid #000
+	position: relative
+.menu-main
+	background: #fff
+	background: rgba(#fff,.5)
+	font: 20px/50px $font1
+	text-transform: uppercase
+	+pie-clearfix
+	.menu-item
+		float: left
+		margin-left: 30px
+		&:first-child
+			margin-left: 10px
+	a
+		color: #000
+.toggle-menu-categories
+	font: 10px/1 $font2
+.menu-categories
+	display: none

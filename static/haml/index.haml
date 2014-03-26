@@ -1,0 +1,119 @@
+﻿!!!
+%html{:lang => "en"} 
+	%head 
+		%meta{:charset => "UTF-8"}/ 
+		%title Desenroladas
+		%link{:rel => "stylesheet", :href => "css/screen.css", :media => "screen, projection"}/ 
+	%body 
+		%header.head 
+			%h1.logo<
+				%img{:src => "img/logo@2x.png", :alt => "Desenroladas", :width => "477", :height => "100"}/ 
+			%nav.nav-main
+				- menu = ["Beleza", "Cinema", "Dicas", "Estilo", "Look", "Make", "Moda", "Saúde", "Viagem"]
+				%ul.menu-main
+					- menu.each do |item|
+						%li.menu-item<
+							%a{:href => "#"}<
+								= item
+				%button.toggle-menu-categories Todas as categorias
+				%ul.menu-categories 
+					- menu.each do |item|
+						%li.menu-item<
+							%a{:href => "#"}<
+								= item
+		%hr/ 
+		%main.main 
+			%section.hero 
+				%ul.hero-list 
+					- 3.times do |ntime|
+						%li.hero-item 
+							%a{:href => "#"} 
+								%img.hero-image{:src => "", :alt => "", :width => "960", :height => "400"}/ 
+								%p.hero-category Moda
+								%h2.hero-title Iury Costa lança coleção inspirada na história de Fortaleza
+								%p.hero-more Leia mais
+			%section.features 
+				%ul.feature-list 
+					- 3.times do |ntime|
+						%li.feature-item 
+							%a{:href => "#"} 
+								%img.feature-image{:src => "", :alt => "", :width => "310", :height => "200"}/ 
+								%p.feature-category Moda
+								%h2.feature-title Alessandra Ambrósio para Vogue Brasil
+			%hr/ 
+			.ad 
+			%hr/ 
+			.body
+				%article.entry 
+					%header.entry-head 
+						%p.entry-category Moda
+						%h2.entry-title<
+							%a{:href => "#"} Iury Costa lança coleção inspirada na história de Fortaleza
+						%p.entry-meta<
+							por 
+							%a.entry-author{:href => "#"} Clara Dourado
+							%span.entry-date há 12 horas atrás
+					.content
+						%p A marca Iury Costa mergulhou na história da capital cearense para produzir seu Inverno 2014. Intitulada Fortaleza/Paris, a coleção resgata a herança cultural francesa que foi marcante por aqui no início do século XX. Cartões-postais como
+						%p a Praça do Ferreira e a Catedral Metropolitana são algumas das referências do intercâmbio entre as duas cidades.
+						%p A partir disso, Iury Costa sugere um remake usando um estilo cosmopolita e atemporal como guia, algo que já está no DNA sofisticado da marca. Musas como Betty Catroux (ex-modelo e musa de nomes como Coco Chanel, Tom Ford e Yves Saint Laurent) e a editora de moda Carine Roitfeld, também inspiram a nova coleção.
+						%p Veja o teaser em vídeo e também as fotos da campanha, clicada por Tiago Lopes.
+						%p<
+							%img{:src => "", :alt => "", :width => "620", :height => "416"}/ 
+						%p<
+							%img{:src => "", :alt => "", :width => "620", :height => "416"}/ 
+					%footer.entry-foot 
+						%p.entry-tags 
+							%b Tags:
+							%a{:href => "#"} Moda
+							%a{:href => "#"} Lançamento
+							%a{:href => "#"} Ceará
+							%a{:href => "#"} Estilo
+						%p.entry-share 
+			%hr/ 
+			.side
+				%aside.widget.widget-about
+					%h3.widget-title Sobre nós
+					%a.about-link{:href => "#"} 
+						%p<
+							%img{:src => "", :alt => "", :width => "300", :height => "270"}/ 
+						%p<
+							Somos a Gabi e a Clara, uma dupla de jornalistas que desenrola tudo sobre moda, beleza, estilo e comportamento. 
+							%b Leia mais
+					%a.about-everyone{:href => "#"} 
+						%figure.about-collaborators
+							%img.collaborator-image{:src => "", :alt => "", :width => "69", :height => "69"}/ 
+							%figcaption.collaborator-caption Iury Costa
+						%p<
+							Para um conteúdo mais completo, contamos com a ajuda de vários colaboradores importantes.
+							%br>
+							%b Conheça todos
+				%aside.widget.widget-ad 
+					%h3.widget-title AD
+					%img{:src => "", :alt => "", :width => "300", :height => "250"}/ 
+				%aside.widget.widget-instagram 
+					%h3.widget-title Instagram
+				%aside.widget.widget-facebook 
+					%h3.widget-title Siga nossa página no Facebook
+				%aside.widget.widget-blogroll 
+					%h3.widget-title Blogroll
+					- arr = ["4th and bleeker", "a pair and a spare", "a. leigh smith", "baby is a sinner", "born to be wild", "color me nana", "coming clean photo", "design sponge", "fashion gone rogue", "free people on facebook", "free people on google+", "free people on instagram"]
+					%ul 
+						- arr.each do |item|
+							%li<
+								%a{:href => "#"}<
+									= item
+				%aside.widget.widget-social 
+					%h3.widget-title Siga-nos
+		%hr/ 
+		%footer.foot 
+			%p.copyright 
+				%img.copy-logo{:src => "", :alt => "", :width => "99", :height => "21"}/ 
+				– por Clara e Gabi Dourado
+			%nav.nav-foot 
+				- zzz = ["Sobre o Blog", "Contato", "Anuncie"]
+				%ul.menu-foot 
+					- zzz.each do |item|
+						%li.menu-item<
+							%a{:href => "#"}<
+								= item
