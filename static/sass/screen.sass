@@ -2,10 +2,16 @@
 
 // Fonts
 
-@import url("http://fonts.googleapis.com/css?family=Playfair+Display+SC|Titillium+Web:300")
+@import url("http://fonts.googleapis.com/css?family=Playfair+Display:400,900,900italic|Playfair+Display+SC|Titillium+Web:400,300,900")
 
 $font1: "Playfair Display SC", sans-serif
-$font2: "Titillium Web", sans-serif
+$font2: "Playfair Display", sans-serif
+$font3: "Titillium Web", sans-serif
+
+// Colors
+
+$gray-lighter: #e5e5e5
+$gray-light: #ccc
 
 // Reset
 
@@ -21,8 +27,24 @@ a
 // Layout
 
 body
+	background: url(../img/bg1.jpg) no-repeat center 0
+.head,
+.main
 	margin: 0 auto
 	width: 960px
+.main
+	text-align: center
+.body, .side
+	text-align: left
+.body
+	float: left
+	width: 620px
+.side
+	float: right
+	width: 300px
+.foot
+	background: #000
+	clear: both
 
 // Header
 
@@ -32,6 +54,7 @@ body
 .nav-main
 	border-top: 1px solid #000
 	position: relative
+	z-index: 10
 .menu-main
 	background: #fff
 	background: rgba(#fff,.5)
@@ -45,7 +68,290 @@ body
 			margin-left: 10px
 	a
 		color: #000
+.wrap-categories
+	position: absolute
+	right: 0
+	top: 0
+	&:hover .menu-categories
+		display: block
 .toggle-menu-categories
-	font: 10px/1 $font2
+	background: none
+	border: 0 none
+	font: 10px/1.2 $font3
+	padding: 13px 26px 13px 0
+	position: relative
+	text-align: right
+	text-transform: uppercase
+	width: 7em
+	+box-sizing(content-box)
+	&:before
+		border-color: #000 transparent transparent transparent
+		border-style: solid
+		border-width: 5px 3px 0 3px
+		content: ""
+		display: block
+		position: absolute
+		right: 10px
+		top: 23px
 .menu-categories
+	border-top: 1px solid #000
 	display: none
+	position: absolute
+	right: 10px
+	top: 50px
+	.menu-item
+		display: inline
+	a
+		background: #fff
+		background: rgba(#fff,.5)
+		border-bottom: 1px solid #000
+		color: #000
+		display: block
+		font: 14px/2 $font3
+		min-width: 5em
+		padding: 0 16px
+		text-align: right
+		text-transform: uppercase
+		white-space: nowrap
+
+// Footer
+
+.foot
+	color: #fff
+	font: 11px/3 $font3
+	letter-spacing: .1em
+	padding-bottom: 25px
+	text-transform: uppercase
+.nav-foot,
+.copyright
+	margin: 0 auto
+	position: relative
+	width: 960px
+.menu-foot
+	padding: 25px 0
+	position: absolute
+	right: 0
+	text-align: right
+	.menu-item
+		display: inline
+	a
+		color: #fff
+		margin-left: 20px
+.copyright
+	padding: 25px 0
+	img
+		vertical-align: text-bottom
+
+// Home
+
+$heroH: 400px
+$heroW: 960px
+.hero
+	margin-bottom: 15px
+	position: relative
+.viewport
+	height: $heroH
+	overflow: hidden
+	position: relative
+.overview
+	left: 0
+	position: absolute
+	top: 0
+	width: $heroW
+.hero-item
+	float: left
+	height: $heroH
+	width: $heroW
+.bullets
+	bottom: 23px
+	left: 45px
+	position: absolute
+	li
+		display: inline
+	a
+		background: #fff
+		border: 5px solid transparent
+		border-radius: 50%
+		float: left
+		height: 4px
+		margin-right: 15px
+		overflow: hidden
+		text-indent: 100%
+		width: 4px
+		+background-clip(padding-box)
+		&.active,
+		&:hover, &:focus, &:active
+			+background-clip(border-box)
+.features
+	text-align: left
+.feature-item
+	float: left
+	margin: 0 0 30px 15px
+	width: 310px
+	&:first-child
+		margin-left: 0
+	a
+		color: #000
+		display: block
+	img
+		border: 1px solid $gray-lighter
+		display: block
+		height: auto
+		margin-bottom: 10px
+		width: 100%
+		+box-sizing(border-box)
+.feature-category
+	font: 10px/1.4 $font3
+	letter-spacing: .2em
+	margin: 0 5px
+	position: relative
+	text-transform: uppercase
+	&:before
+		background: #000
+		content: ""
+		display: block
+		height: 1px
+		position: absolute
+		right: 0
+		top: 0
+		width: 12px
+.feature-title
+	font: 27px/1.2 $font2
+	padding: 0 5px 30px
+
+.ad
+	display: inline-block
+	margin: 30px auto
+	padding: 0 35px
+	position: relative
+	&:before,
+	&:after
+		border-bottom: 1px solid #000
+		border-top: 1px solid #000
+		content: "AD"
+		display: block
+		font: 900 9px/2 $font3
+		height: 100%
+		position: absolute
+		top: 0
+		+box-sizing(border-box)
+	&:before
+		color: #000
+		left: 0
+	&:after
+		color: transparent
+		right: 0
+
+// Body
+
+.entry
+	margin-bottom: 60px
+.entry-category
+	font: 10px/3.4 $font3
+	letter-spacing: .2em
+	margin-bottom: 5px
+	position: relative
+	text-transform: uppercase
+	&:before
+		background: #000
+		bottom: 0
+		content: ""
+		display: block
+		height: 1px
+		left: 0
+		position: absolute
+		width: 12px
+.entry-title
+	font: 900 38px/1.2 $font2
+	margin-bottom: 40px
+	a
+		color: #000
+.entry-meta
+	font: 10px $font3
+	letter-spacing: .2em
+	margin-bottom: 40px
+	text-transform: uppercase
+.entry-author
+	color: #000
+	font-weight: 900
+
+.entry-foot
+	padding: 30px 0
+.entry-tags
+	font: 900 10px $font3
+	letter-spacing: .2em
+	text-transform: uppercase
+	a
+		background: #000
+		color: #fff
+		display: inline-block
+		font-weight: 400
+		padding: 0 .2em 0 .4em
+
+.content
+	p, ul, ol
+		font: 300 18px/1.5 $font3
+		margin-bottom: 1.5em
+		a,
+		em, i,
+		strong, b,
+			font-family: $font2
+			font-style: italic
+			font-weight: 900
+		a
+			border-bottom: 1px dotted #000
+			color: #000
+	img
+		display: block
+		height: auto
+		max-width: 100%
+
+// Sidebar
+
+.widget
+	font: 11px/1.5 $font3
+	margin-bottom: 60px
+	a
+		color: #000
+	p
+		letter-spacing: .1em
+		margin-bottom: 1.5em
+		text-transform: uppercase
+	ul, ol
+		font: 300 14px/1.8 $font3
+		li
+			border-top: 1px solid $gray-light
+			&:first-child
+				border-top: 0 none
+			a
+				display: block
+.widget-title
+	font: 900 10px/2.8 $font3
+	letter-spacing: .2em
+	margin-bottom: 10px
+	position: relative
+	text-transform: uppercase
+	&:before
+		background: #000
+		content: ""
+		display: block
+		height: 1px
+		left: 0
+		position: absolute
+		top: 0
+		width: 12px
+
+.widget-about
+	a
+		display: block
+	.widget-title
+		background: #000
+		color: #fff
+		margin: 16px 0 0
+		padding: 0 12px
+		&:before
+			top: -16px
+	.about-everyone
+		border-top: 1px solid #000
+		font-size: inherit
+		padding-top: 1.5em

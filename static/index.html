@@ -20,69 +20,78 @@
           <li class="menu-item"><a href="#">Saúde</a></li>
           <li class="menu-item"><a href="#">Viagem</a></li>
         </ul>
-        <button class="toggle-menu-categories">Todas as categorias</button>
-        <ul class="menu-categories">
-          <li class="menu-item"><a href="#">Beleza</a></li>
-          <li class="menu-item"><a href="#">Cinema</a></li>
-          <li class="menu-item"><a href="#">Dicas</a></li>
-          <li class="menu-item"><a href="#">Estilo</a></li>
-          <li class="menu-item"><a href="#">Look</a></li>
-          <li class="menu-item"><a href="#">Make</a></li>
-          <li class="menu-item"><a href="#">Moda</a></li>
-          <li class="menu-item"><a href="#">Saúde</a></li>
-          <li class="menu-item"><a href="#">Viagem</a></li>
-        </ul>
+        <div class="wrap-categories">
+          <button class="toggle-menu-categories">Todas as categorias</button>
+          <ul class="menu-categories" id="categories">
+            <li class="menu-item"><a href="#">Beleza</a></li>
+            <li class="menu-item"><a href="#">Cinema</a></li>
+            <li class="menu-item"><a href="#">Dicas</a></li>
+            <li class="menu-item"><a href="#">Estilo</a></li>
+            <li class="menu-item"><a href="#">Look</a></li>
+            <li class="menu-item"><a href="#">Make</a></li>
+            <li class="menu-item"><a href="#">Moda</a></li>
+            <li class="menu-item"><a href="#">Saúde</a></li>
+            <li class="menu-item"><a href="#">Viagem</a></li>
+          </ul>
+        </div>
       </nav>
     </header>
     <hr>
     <main class="main">
-      <section class="hero">
-        <ul class="hero-list">
-          <li class="hero-item">
-            <a href="#">
-              <img alt="" class="hero-image" height="400" src="" width="960">
-              <p class="hero-category">Moda</p>
-              <h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
-              <p class="hero-more">Leia mais</p>
-            </a>
-          </li>
-          <li class="hero-item">
-            <a href="#">
-              <img alt="" class="hero-image" height="400" src="" width="960">
-              <p class="hero-category">Moda</p>
-              <h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
-              <p class="hero-more">Leia mais</p>
-            </a>
-          </li>
-          <li class="hero-item">
-            <a href="#">
-              <img alt="" class="hero-image" height="400" src="" width="960">
-              <p class="hero-category">Moda</p>
-              <h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
-              <p class="hero-more">Leia mais</p>
-            </a>
-          </li>
+      <section class="hero" id="hero">
+        <div class="viewport">
+          <ul class="hero-list overview">
+            <li class="hero-item">
+              <a href="#">
+                <img alt="" height="400" src="http://dummyimage.com/960x400" width="960">
+                <p class="hero-category">Moda</p>
+                <h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
+                <p class="hero-more">Leia mais</p>
+              </a>
+            </li>
+            <li class="hero-item">
+              <a href="#">
+                <img alt="" height="400" src="http://dummyimage.com/960x400" width="960">
+                <p class="hero-category">Moda</p>
+                <h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
+                <p class="hero-more">Leia mais</p>
+              </a>
+            </li>
+            <li class="hero-item">
+              <a href="#">
+                <img alt="" height="400" src="http://dummyimage.com/960x400" width="960">
+                <p class="hero-category">Moda</p>
+                <h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
+                <p class="hero-more">Leia mais</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <ul class="bullets">
+          <li><a class="bullet" href="#">1</a></li>
+          <li><a class="bullet" href="#">2</a></li>
+          <li><a class="bullet" href="#">3</a></li>
         </ul>
       </section>
       <section class="features">
         <ul class="feature-list">
           <li class="feature-item">
             <a href="#">
-              <img alt="" class="feature-image" height="200" src="" width="310">
+              <img alt="" height="200" src="http://dummyimage.com/310x200" width="310">
               <p class="feature-category">Moda</p>
               <h2 class="feature-title">Alessandra Ambrósio para Vogue Brasil</h2>
             </a>
           </li>
           <li class="feature-item">
             <a href="#">
-              <img alt="" class="feature-image" height="200" src="" width="310">
+              <img alt="" height="200" src="http://dummyimage.com/310x200" width="310">
               <p class="feature-category">Moda</p>
               <h2 class="feature-title">Alessandra Ambrósio para Vogue Brasil</h2>
             </a>
           </li>
           <li class="feature-item">
             <a href="#">
-              <img alt="" class="feature-image" height="200" src="" width="310">
+              <img alt="" height="200" src="http://dummyimage.com/310x200" width="310">
               <p class="feature-category">Moda</p>
               <h2 class="feature-title">Alessandra Ambrósio para Vogue Brasil</h2>
             </a>
@@ -90,7 +99,9 @@
         </ul>
       </section>
       <hr>
-      <div class="ad"></div>
+      <div class="ad">
+        <img alt="" height="90" src="http://dummyimage.com/728x90" width="728">
+      </div>
       <hr>
       <div class="body">
         <article class="entry">
@@ -102,12 +113,49 @@
             <span class="entry-date">há 12 horas atrás</span></p>
           </header>
           <div class="content">
-            <p>A marca Iury Costa mergulhou na história da capital cearense para produzir seu Inverno 2014. Intitulada Fortaleza/Paris, a coleção resgata a herança cultural francesa que foi marcante por aqui no início do século XX. Cartões-postais como</p>
-            <p>a Praça do Ferreira e a Catedral Metropolitana são algumas das referências do intercâmbio entre as duas cidades.</p>
+            <p>A marca
+            <strong>Iury Costa</strong>
+            mergulhou na história da capital cearense para produzir seu Inverno 2014. Intitulada
+            <strong>Fortaleza/Paris</strong>
+            , a coleção resgata a herança cultural francesa que foi marcante por aqui no início do século XX. Cartões-postais como a Praça do Ferreira e a Catedral Metropolitana são algumas das referências do intercâmbio entre as duas cidades.</p>
             <p>A partir disso, Iury Costa sugere um remake usando um estilo cosmopolita e atemporal como guia, algo que já está no DNA sofisticado da marca. Musas como Betty Catroux (ex-modelo e musa de nomes como Coco Chanel, Tom Ford e Yves Saint Laurent) e a editora de moda Carine Roitfeld, também inspiram a nova coleção.</p>
-            <p>Veja o teaser em vídeo e também as fotos da campanha, clicada por Tiago Lopes.</p>
-            <p><img alt="" height="416" src="" width="620"></p>
-            <p><img alt="" height="416" src="" width="620"></p>
+            <p>Veja o teaser em vídeo e também as fotos da campanha, clicada por
+            <a href="#">Tiago Lopes</a>
+            .</p>
+            <p><img alt="" height="416" src="http://dummyimage.com/620x416" width="620"></p>
+            <p><img alt="" height="416" src="http://dummyimage.com/620x416" width="620"></p>
+          </div>
+          <footer class="entry-foot">
+            <p class="entry-tags">
+              <b>Tags:</b>
+              <a href="#">Moda</a>
+              <a href="#">Lançamento</a>
+              <a href="#">Ceará</a>
+              <a href="#">Estilo</a>
+            </p>
+            <p class="entry-share"></p>
+          </footer>
+        </article>
+        <article class="entry">
+          <header class="entry-head">
+            <p class="entry-category">Moda</p>
+            <h2 class="entry-title"><a href="#">Iury Costa lança coleção inspirada na história de Fortaleza</a></h2>
+            <p class="entry-meta">por
+            <a class="entry-author" href="#">Clara Dourado</a>
+            <span class="entry-date">há 12 horas atrás</span></p>
+          </header>
+          <div class="content">
+            <p>A marca
+            <strong>Iury Costa</strong>
+            mergulhou na história da capital cearense para produzir seu Inverno 2014. Intitulada
+            <strong>Fortaleza/Paris</strong>
+            , a coleção resgata a herança cultural francesa que foi marcante por aqui no início do século XX. Cartões-postais como a Praça do Ferreira e a Catedral Metropolitana são algumas das referências do intercâmbio entre as duas cidades.</p>
+            <p>A partir disso, Iury Costa sugere um remake usando um estilo cosmopolita e atemporal como guia, algo que já está no DNA sofisticado da marca. Musas como Betty Catroux (ex-modelo e musa de nomes como Coco Chanel, Tom Ford e Yves Saint Laurent) e a editora de moda Carine Roitfeld, também inspiram a nova coleção.</p>
+            <p>Veja o teaser em vídeo e também as fotos da campanha, clicada por
+            <a href="#">Tiago Lopes</a>
+            .</p>
+            <p><img alt="" height="416" src="http://dummyimage.com/620x416" width="620"></p>
+            <p><img alt="" height="416" src="http://dummyimage.com/620x416" width="620"></p>
           </div>
           <footer class="entry-foot">
             <p class="entry-tags">
@@ -126,21 +174,21 @@
         <aside class="widget widget-about">
           <h3 class="widget-title">Sobre nós</h3>
           <a class="about-link" href="#">
-            <p><img alt="" height="270" src="" width="300"></p>
+            <p><img alt="" height="270" src="http://dummyimage.com/300x270" width="300"></p>
             <p>Somos a Gabi e a Clara, uma dupla de jornalistas que desenrola tudo sobre moda, beleza, estilo e comportamento. 
-            <b>Leia mais</b></p>
+            <strong>Leia mais</strong></p>
           </a>
           <a class="about-everyone" href="#">
             <figure class="about-collaborators">
-              <img alt="" class="collaborator-image" height="69" src="" width="69">
+              <img alt="" class="collaborator-image" height="69" src="http://dummyimage.com/69x69" width="69">
               <figcaption class="collaborator-caption">Iury Costa</figcaption>
             </figure>
-            <p>Para um conteúdo mais completo, contamos com a ajuda de vários colaboradores importantes.<br><b>Conheça todos</b></p>
+            <p>Para um conteúdo mais completo, contamos com a ajuda de vários colaboradores importantes.<br><strong>Conheça todos</strong></p>
           </a>
         </aside>
         <aside class="widget widget-ad">
           <h3 class="widget-title">AD</h3>
-          <img alt="" height="250" src="" width="300">
+          <img alt="" height="250" src="http://dummyimage.com/300x250" width="300">
         </aside>
         <aside class="widget widget-instagram">
           <h3 class="widget-title">Instagram</h3>
@@ -172,10 +220,6 @@
     </main>
     <hr>
     <footer class="foot">
-      <p class="copyright">
-        <img alt="" class="copy-logo" height="21" src="" width="99">
-        – por Clara e Gabi Dourado
-      </p>
       <nav class="nav-foot">
         <ul class="menu-foot">
           <li class="menu-item"><a href="#">Sobre o Blog</a></li>
@@ -183,6 +227,10 @@
           <li class="menu-item"><a href="#">Anuncie</a></li>
         </ul>
       </nav>
+      <p class="copyright">
+        <img alt="" class="copy-logo" height="21" src="http://dummyimage.com/99x21" width="99">
+        – por Clara e Gabi Dourado
+      </p>
     </footer>
   </body>
 </html>
