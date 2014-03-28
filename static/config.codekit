@@ -49,6 +49,36 @@
 		"useDoubleQuotes": 1,
 		"useUnixNewlines": 0
 		},
+	"\/img\/bg1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 93599,
+		"inputAbbreviatedPath": "\/img\/bg1.jpg",
+		"outputAbbreviatedPath": "\/img\/bg1.jpg",
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/img\/logo-mini.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1777,
+		"inputAbbreviatedPath": "\/img\/logo-mini.png",
+		"outputAbbreviatedPath": "\/img\/logo-mini.png",
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/img\/logo-mini@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3756,
+		"inputAbbreviatedPath": "\/img\/logo-mini@2x.png",
+		"outputAbbreviatedPath": "\/img\/logo-mini@2x.png",
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
 	"\/img\/logo.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -57,7 +87,7 @@
 		"inputAbbreviatedPath": "\/img\/logo.png",
 		"outputAbbreviatedPath": "\/img\/logo.png",
 		"outputPathIsSetByUser": 0,
-		"processed": 0
+		"processed": 1
 		},
 	"\/img\/logo@2x.png": {
 		"fileType": 32768,
@@ -67,7 +97,37 @@
 		"inputAbbreviatedPath": "\/img\/logo@2x.png",
 		"outputAbbreviatedPath": "\/img\/logo@2x.png",
 		"outputPathIsSetByUser": 0,
-		"processed": 0
+		"processed": 1
+		},
+	"\/img\/screenshot.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 533093,
+		"inputAbbreviatedPath": "\/img\/screenshot.png",
+		"outputAbbreviatedPath": "\/img\/screenshot.png",
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/img\/watermark.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 23918,
+		"inputAbbreviatedPath": "\/img\/watermark.png",
+		"outputAbbreviatedPath": "\/img\/watermark.png",
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/img\/watermark@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 0,
+		"inputAbbreviatedPath": "\/img\/watermark@2x.png",
+		"outputAbbreviatedPath": "\/img\/watermark@2x.png",
+		"outputPathIsSetByUser": 0,
+		"processed": 1
 		},
 	"\/index.html": {
 		"fileType": 8192,

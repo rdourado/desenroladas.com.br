@@ -86,6 +86,15 @@
 								%a{:href => "#"} Ceará
 								%a{:href => "#"} Estilo
 							%p.entry-share 
+				%section.related-posts
+					%h2.related-heading Relacionados
+					%ul.related-list 
+						- 2.times do |ntime|
+							%li.related-item 
+								%a{:href => "#"} 
+									%img{:src => "http://dummyimage.com/310x200", :alt => "", :width => "310", :height => "200"}/ 
+									%p.related-category Moda
+									%h2.related-title Alessandra Ambrósio para Vogue Brasil
 			%hr/ 
 			.side
 				%aside.widget.widget-about
@@ -131,5 +140,5 @@
 							%a{:href => "#"}<
 								= item
 			%p.copyright 
-				%img.copy-logo{:src => "http://dummyimage.com/99x21", :alt => "", :width => "99", :height => "21"}/ 
+				%img.copy-logo{:src => "img/logo-mini@2x.png", :alt => "Desenroladas", :width => "99", :height => "21"}/ 
 				\– por Clara e Gabi Dourado

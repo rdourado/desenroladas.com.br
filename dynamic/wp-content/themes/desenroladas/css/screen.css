@@ -118,7 +118,14 @@ body {
   position: absolute;
   right: 0;
   top: 0; }
-  .wrap-categories:hover .menu-categories .menu-item {
+  .wrap-categories:hover .menu-item,
+  .wrap-categories:hover .cat-item, .wrap-categories:focus .menu-item,
+  .wrap-categories:focus .cat-item, .wrap-categories:active .menu-item,
+  .wrap-categories:active .cat-item {
+    margin-top: 0;
+    opacity: 1; }
+  .wrap-categories .menu-categories:target .menu-item,
+  .wrap-categories .menu-categories:target .cat-item {
     margin-top: 0;
     opacity: 1; }
 
@@ -127,7 +134,8 @@ body {
   position: absolute;
   right: 10px;
   top: 50px; }
-  .menu-categories .menu-item {
+  .menu-categories .menu-item,
+  .menu-categories .cat-item {
     background: white;
     background: rgba(255, 255, 255, 0.5);
     border-top: 1px solid black;
@@ -157,6 +165,9 @@ body {
 .toggle-menu-categories {
   background: none;
   border: 0 none;
+  color: black;
+  cursor: default;
+  display: block;
   font: 10px/1.2 "Titillium Web", sans-serif;
   padding: 13px 26px 13px 0;
   position: relative;
@@ -205,6 +216,7 @@ body {
   position: absolute;
   right: 0;
   text-align: right;
+  white-space: nowrap;
   z-index: 1; }
   .menu-foot .menu-item {
     display: inline; }
@@ -357,6 +369,14 @@ body {
   margin-bottom: 5px;
   position: relative;
   text-transform: uppercase; }
+  .entry-category a,
+  .related-heading a {
+    color: black; }
+    .entry-category a:hover, .entry-category a:focus, .entry-category a:active,
+    .related-heading a:hover,
+    .related-heading a:focus,
+    .related-heading a:active {
+      border-bottom: 1px dashed black; }
   .entry-category:before,
   .related-heading:before {
     background: black;
@@ -381,10 +401,11 @@ body {
   letter-spacing: 0.2em;
   margin-bottom: 40px;
   text-transform: uppercase; }
-
-.entry-author {
-  color: black;
-  font-weight: 900; }
+  .entry-meta a {
+    color: black;
+    font-weight: 900; }
+    .entry-meta a:hover, .entry-meta a:focus, .entry-meta a:active {
+      border-bottom: 1px dashed black; }
 
 .entry-foot {
   padding: 30px 0; }
@@ -399,7 +420,11 @@ body {
     color: white;
     display: inline-block;
     font-weight: 400;
-    padding: 0 0.2em 0 0.4em; }
+    padding: 0 0.2em 0 0.4em;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out; }
     .entry-tags a:hover, .entry-tags a:focus, .entry-tags a:active {
       background: transparent;
       color: black; }

@@ -43,7 +43,6 @@ body
 	float: right
 	width: 300px
 .foot
-	background: #000
 	clear: both
 
 // Header
@@ -56,27 +55,69 @@ body
 	position: relative
 	z-index: 10
 .menu-main
+	+pie-clearfix
 	background: #fff
 	background: rgba(#fff,.5)
 	font: 20px/50px $font1
 	text-transform: uppercase
-	+pie-clearfix
 	.menu-item
 		float: left
-		margin-left: 30px
+		margin-left: 10px
 		&:first-child
-			margin-left: 10px
+			margin-left: 0
 	a
 		color: #000
+		display: block
+		padding: 0 10px
+		+single-transition(background, .3s, ease-out)
+		&:hover, &:focus, &:active
+			background: rgba(#000,.1)
 .wrap-categories
 	position: absolute
 	right: 0
 	top: 0
-	&:hover .menu-categories
+	&:hover, &:focus, &:active
+		.menu-item,
+		.cat-item
+			margin-top: 0
+			opacity: 1
+	.menu-categories:target
+		.menu-item,
+		.cat-item
+			margin-top: 0
+			opacity: 1
+.menu-categories
+	overflow: hidden
+	position: absolute
+	right: 10px
+	top: 50px
+	.menu-item,
+	.cat-item
+		background: #fff
+		background: rgba(#fff,.5)
+		border-top: 1px solid #000
 		display: block
+		margin-top: -30px
+		opacity: 0
+		+single-transition(all, .4s, ease-out)
+	a
+		color: #000
+		display: block
+		font: 14px/2 $font3
+		min-width: 5em
+		padding: 0 16px
+		text-align: right
+		text-transform: uppercase
+		white-space: nowrap
+		+single-transition(background, .3s, ease-out)
+		&:hover, &:focus, &:active
+			background: rgba(#000,.1)
 .toggle-menu-categories
 	background: none
 	border: 0 none
+	color: #000
+	cursor: default
+	display: block
 	font: 10px/1.2 $font3
 	padding: 13px 26px 13px 0
 	position: relative
@@ -93,50 +134,43 @@ body
 		position: absolute
 		right: 10px
 		top: 23px
-.menu-categories
-	border-top: 1px solid #000
-	display: none
-	position: absolute
-	right: 10px
-	top: 50px
-	.menu-item
-		display: inline
-	a
-		background: #fff
-		background: rgba(#fff,.5)
-		border-bottom: 1px solid #000
-		color: #000
-		display: block
-		font: 14px/2 $font3
-		min-width: 5em
-		padding: 0 16px
-		text-align: right
-		text-transform: uppercase
-		white-space: nowrap
 
 // Footer
 
 .foot
+	background: #000 url(../img/watermark.png) no-repeat left bottom
 	color: #fff
 	font: 11px/3 $font3
 	letter-spacing: .1em
 	padding-bottom: 25px
 	text-transform: uppercase
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 
+	.foot
+		background-image: url(../img/watermark@2x.png)
+		+background-size(image-width("../img/watermark.png") image-height("../img/watermark.png"))
+
 .nav-foot,
 .copyright
 	margin: 0 auto
 	position: relative
 	width: 960px
+.nav-foot
+	z-index: 2
 .menu-foot
 	padding: 25px 0
 	position: absolute
 	right: 0
 	text-align: right
+	white-space: nowrap
+	z-index: 1
 	.menu-item
 		display: inline
 	a
 		color: #fff
 		margin-left: 20px
+		&:hover, &:focus, &:active
+			border-bottom: 1px dashed #fff
 .copyright
 	padding: 25px 0
 	img
@@ -184,7 +218,8 @@ $heroW: 960px
 			+background-clip(border-box)
 .features
 	text-align: left
-.feature-item
+.feature-item,
+.related-item
 	float: left
 	margin: 0 0 30px 15px
 	width: 310px
@@ -193,6 +228,9 @@ $heroW: 960px
 	a
 		color: #000
 		display: block
+		&:hover, &:focus, &:active
+			img
+				border-color: #000
 	img
 		border: 1px solid $gray-lighter
 		display: block
@@ -200,7 +238,9 @@ $heroW: 960px
 		margin-bottom: 10px
 		width: 100%
 		+box-sizing(border-box)
-.feature-category
+		+single-transition(border, .3s, ease-out)
+.feature-category,
+.related-category
 	font: 10px/1.4 $font3
 	letter-spacing: .2em
 	margin: 0 5px
@@ -215,7 +255,8 @@ $heroW: 960px
 		right: 0
 		top: 0
 		width: 12px
-.feature-title
+.feature-title,
+.related-title
 	font: 27px/1.2 $font2
 	padding: 0 5px 30px
 
@@ -246,12 +287,17 @@ $heroW: 960px
 
 .entry
 	margin-bottom: 60px
-.entry-category
+.entry-category,
+.related-heading
 	font: 10px/3.4 $font3
 	letter-spacing: .2em
 	margin-bottom: 5px
 	position: relative
 	text-transform: uppercase
+	a
+		color: #000
+		&:hover, &:focus, &:active
+			border-bottom: 1px dashed #000
 	&:before
 		background: #000
 		bottom: 0
@@ -266,14 +312,18 @@ $heroW: 960px
 	margin-bottom: 40px
 	a
 		color: #000
+		&:hover, &:focus, &:active
+			border-bottom: 1px dashed #000
 .entry-meta
 	font: 10px $font3
 	letter-spacing: .2em
 	margin-bottom: 40px
 	text-transform: uppercase
-.entry-author
-	color: #000
-	font-weight: 900
+	a
+		color: #000
+		font-weight: 900
+		&:hover, &:focus, &:active
+			border-bottom: 1px dashed #000
 
 .entry-foot
 	padding: 30px 0
@@ -283,10 +333,15 @@ $heroW: 960px
 	text-transform: uppercase
 	a
 		background: #000
+		border: 1px solid #000
 		color: #fff
 		display: inline-block
 		font-weight: 400
 		padding: 0 .2em 0 .4em
+		+single-transition(all, .3s, ease-out)
+		&:hover, &:focus, &:active
+			background: transparent
+			color: #000
 
 .content
 	p, ul, ol
@@ -298,22 +353,36 @@ $heroW: 960px
 			font-family: $font2
 			font-style: italic
 			font-weight: 900
-		a
-			border-bottom: 1px dotted #000
-			color: #000
+	a
+		border-bottom: 1px dashed #000
+		color: #000
+		&:hover, &:focus, &:active
+			border-bottom-style: solid
 	img
 		display: block
 		height: auto
 		max-width: 100%
 
+.related-posts
+	+pie-clearfix
+	clear: both
+	margin-bottom: 60px
+.related-heading
+	margin-bottom: 20px
+.related-item
+	width: 300px
+
 // Sidebar
 
 .widget
+	+pie-clearfix
+	clear: both
 	font: 11px/1.5 $font3
 	margin-bottom: 60px
 	a
 		color: #000
 	p
+		font-size: inherit
 		letter-spacing: .1em
 		margin-bottom: 1.5em
 		text-transform: uppercase
@@ -353,5 +422,9 @@ $heroW: 960px
 			top: -16px
 	.about-everyone
 		border-top: 1px solid #000
-		font-size: inherit
 		padding-top: 1.5em
+		p
+			margin-left: 80px
+	.about-collaborators
+		float: left
+		width: 69px
