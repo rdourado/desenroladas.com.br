@@ -28,3 +28,23 @@ function my_widgets_init() {
 		'after_title'   => '</h3>',
 	) );
 }
+
+// Actions
+
+add_action( 'pre_get_posts', 'my_ignore_sticky' );
+
+function my_ignore_sticky( $query ) {
+	if ( is_home() && $query->is_main_query() )
+		$query->set( 'ignore_sticky_posts', true );
+}
+
+// Functions
+
+function my_the_category( $sep = ' – ' ) {
+	global $post;
+	$arr = array();
+	$categories = get_the_category();
+	foreach( $categories as $category )
+		$arr[] = $category->cat_name;
+	echo implode( $sep, $arr );
+}
