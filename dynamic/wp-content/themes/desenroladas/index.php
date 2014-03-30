@@ -5,6 +5,7 @@
 					the_post();
 					get_template_part( 'loop', $post->post_type );
 				endwhile; ?>
+<?php 			if ( function_exists( 'wp_pagenavi' ) ) wp_pagenavi(); ?>
 			</div>
 <?php 		get_sidebar() ?>
 		</main>

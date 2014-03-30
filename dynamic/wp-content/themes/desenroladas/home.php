@@ -1,40 +1,40 @@
 <?php get_header() ?>
 		<main class="main">
+<?php 		if ( get_field( 'destaques', 'options' ) ) : ?>
 			<section class="hero" id="hero">
+				<a class="buttons prev" href="#">&#60;</a>
 				<div class="viewport">
 					<ul class="hero-list overview">
-						<li class="hero-item">
-							<a href="#">
-								<img alt="" height="400" src="http://dummyimage.com/960x400" width="960">
-								<p class="hero-category">Moda</p>
-								<h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
-								<p class="hero-more">Leia mais</p>
+<?php 					while ( has_sub_field( 'destaques', 'options' ) ) :
+						$class = array( get_sub_field( 'cor' ), get_sub_field( 'posicao' ) );
+						$class = array_filter( $class ); 
+						$sep = ' hero-';
+						if ( $class ) 
+							$class = $sep . implode( $sep, $class ); ?>
+						<li class="hero-item<?php echo $class; ?>">
+							<a href="<?php the_permalink() ?>">
+								<?php my_acf_thumbnail( get_sub_field( 'imagem' ) ) ?>
+								<div class="hero-table">
+									<div class="hero-cell">
+										<p class="hero-category"><?php my_the_category() ?></p>
+										<h2 class="hero-title"><?php the_title() ?></h2>
+										<p class="hero-more">Leia mais</p>
+									</div>
+								</div>
 							</a>
 						</li>
-						<li class="hero-item">
-							<a href="#">
-								<img alt="" height="400" src="http://dummyimage.com/960x400" width="960">
-								<p class="hero-category">Moda</p>
-								<h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
-								<p class="hero-more">Leia mais</p>
-							</a>
-						</li>
-						<li class="hero-item">
-							<a href="#">
-								<img alt="" height="400" src="http://dummyimage.com/960x400" width="960">
-								<p class="hero-category">Moda</p>
-								<h2 class="hero-title">Iury Costa lança coleção inspirada na história de Fortaleza</h2>
-								<p class="hero-more">Leia mais</p>
-							</a>
-						</li>
+<?php 					endwhile; ?>
 					</ul>
 				</div>
+				<a class="buttons next" href="#">&#62;</a>
 				<ul class="bullets">
-					<li><a class="bullet" href="#">1</a></li>
-					<li><a class="bullet" href="#">2</a></li>
-					<li><a class="bullet" href="#">3</a></li>
+<?php 				$i = 0;
+					while ( has_sub_field( 'destaques', 'options' ) ) : ?>
+					<li><a class="bullet" data-slide="<?php echo $i++; ?>" href="#"><?php echo $i; ?></a></li>
+<?php 				endwhile; ?>
 				</ul>
 			</section>
+<?php 		endif; ?>
 <?php 		$sticky = new WP_Query( array(
 				'posts_per_page' => 3,
 				'post__in'  => get_option( 'sticky_posts' ),
@@ -57,10 +57,10 @@
 <?php 		endif;
 			wp_reset_query(); ?>
 			<hr>
-			<div class="ad">
+			<!-- <div class="ad">
 				<img alt="" height="90" src="http://dummyimage.com/728x90" width="728">
 			</div>
-			<hr>
+			<hr> -->
 			<div class="body">
 <?php 			while( have_posts() ) : 
 					the_post();
@@ -98,6 +98,7 @@
 					endif;
 					wp_reset_query();
 				endif; ?>
+<?php 			if ( function_exists( 'wp_pagenavi' ) ) wp_pagenavi(); ?>
 			</div>
 <?php 		get_sidebar() ?>
 		</main>
