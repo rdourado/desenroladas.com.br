@@ -1,4 +1,11 @@
 <?php get_header() ?>
+<?php 	while ( has_sub_field( 'tertiary', 'options' ) ) :
+		$post_obj = get_sub_field( 'artigo' ); ?>
+		<div class="weekly">
+			<a href="<?php echo get_permalink( $post_obj ); ?>"><?php my_acf_thumbnail( get_sub_field( 'imagem' ), 'huge' ); ?></a>
+		</div>
+		<hr>
+<?php 	endwhile; ?>
 		<main class="main">
 			<div class="body">
 <?php 			while( have_posts() ) : 

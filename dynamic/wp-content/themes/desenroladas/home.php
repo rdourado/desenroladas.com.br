@@ -1,23 +1,26 @@
 <?php get_header() ?>
 		<main class="main">
-<?php 		if ( get_field( 'destaques', 'options' ) ) : ?>
+<?php 		if ( get_field( 'primary', 'options' ) ) : ?>
 			<section class="hero" id="hero">
 				<a class="buttons prev" href="#">&#60;</a>
 				<div class="viewport">
 					<ul class="hero-list overview">
-<?php 					while ( has_sub_field( 'destaques', 'options' ) ) :
+<?php 					$total = 0;
+						while ( has_sub_field( 'primary', 'options' ) ) : 
+						$total++;
+						$post_obj = get_sub_field( 'artigo' );
 						$class = array( get_sub_field( 'cor' ), get_sub_field( 'posicao' ) );
 						$class = array_filter( $class ); 
 						$sep = ' hero-';
 						if ( $class ) 
 							$class = $sep . implode( $sep, $class ); ?>
 						<li class="hero-item<?php echo $class; ?>">
-							<a href="<?php the_permalink() ?>">
+							<a href="<?php echo get_permalink( $post_obj ); ?>">
 								<?php my_acf_thumbnail( get_sub_field( 'imagem' ) ) ?>
 								<div class="hero-table">
 									<div class="hero-cell">
-										<p class="hero-category"><?php my_the_category() ?></p>
-										<h2 class="hero-title"><?php the_title() ?></h2>
+										<p class="hero-category"><?php my_the_category( $post_obj ) ?></p>
+										<h2 class="hero-title"><?php echo get_the_title( $post_obj ); ?></h2>
 										<p class="hero-more">Leia mais</p>
 									</div>
 								</div>
@@ -28,35 +31,36 @@
 				</div>
 				<a class="buttons next" href="#">&#62;</a>
 				<ul class="bullets">
-<?php 				$i = 0;
-					while ( has_sub_field( 'destaques', 'options' ) ) : ?>
-					<li><a class="bullet" data-slide="<?php echo $i++; ?>" href="#"><?php echo $i; ?></a></li>
-<?php 				endwhile; ?>
+<?php 				for ( $i = 0; $i < $total; $i++ ) : ?>
+					<li><a class="bullet" data-slide="<?php echo $i; ?>" href="#"><?php echo $i; ?></a></li>
+<?php 				endfor; ?>
 				</ul>
 			</section>
 <?php 		endif; ?>
-<?php 		$sticky = new WP_Query( array(
-				'posts_per_page' => 3,
-				'post__in'  => get_option( 'sticky_posts' ),
-				'ignore_sticky_posts' => 1
-			) );
-			if ( $sticky->have_posts() ) : ?>
+<?php 		if ( get_field( 'secondary', 'options' ) ) : ?>
 			<section class="features">
 				<ul class="feature-list">
-<?php 				while ( $sticky->have_posts() ) : $sticky->the_post(); ?>
+<?php 				while ( has_sub_field( 'secondary', 'options' ) ) :
+					$post_obj = get_sub_field( 'artigo' ); ?>
 					<li class="feature-item">
-						<a href="<?php the_permalink() ?>">
-							<?php the_post_thumbnail() ?>
-							<p class="feature-category"><?php my_the_category( ' – ' ) ?></p>
-							<h2 class="feature-title"><?php the_title() ?></h2>
+						<a href="<?php echo get_permalink( $post_obj ); ?>">
+							<?php my_acf_thumbnail( get_sub_field( 'imagem' ), 'post-thumbnail' ) ?>
+							<p class="feature-category"><?php my_the_category( $post_obj ) ?></p>
+							<h2 class="feature-title"><?php echo get_the_title( $post_obj ); ?></h2>
 						</a>
 					</li>
 <?php 				endwhile; ?>
 				</ul>
 			</section>
-<?php 		endif;
-			wp_reset_query(); ?>
+<?php 		endif; ?>
+<?php 		while ( has_sub_field( 'tertiary', 'options' ) ) :
+			$post_obj = get_sub_field( 'artigo' ); ?>
 			<hr>
+			<div class="weekly">
+				<h3 class="heading">Coluna mais recente</h3>
+				<a href="<?php echo get_permalink( $post_obj ); ?>"><?php my_acf_thumbnail( get_sub_field( 'imagem' ), 'huge' ); ?></a>
+			</div>
+<?php 		endwhile; ?>
 			<!-- <div class="ad">
 				<img alt="" height="90" src="http://dummyimage.com/728x90" width="728">
 			</div>

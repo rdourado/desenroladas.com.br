@@ -14,14 +14,29 @@ add_action( 'after_setup_theme', 'my_setup' );
 add_action( 'widgets_init', 'my_widgets_init' );
 
 function my_setup() {
+	// Images
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 310, 200, true );
 	add_image_size( 'hero', 960, 400, true );
+	add_image_size( 'huge', 960, 530, true );
 
+	// Menu
 	register_nav_menus( array(
 		'primary'   => 'Categorias',
 		'secondary' => 'Rodapé',
 	) );
+
+	// Background
+	$defaults = array(
+		'default-color'          => 'ffffff',
+		'default-image'          => get_stylesheet_directory_uri() . '/img/bg1.jpg',
+		'default-repeat'         => 'no-repeat',
+		'default-position-x'     => 'center',
+		// 'wp-head-callback'       => '_custom_background_cb',
+		// 'admin-head-callback'    => '',
+		// 'admin-preview-callback' => ''
+	);
+	add_theme_support( 'custom-background', $defaults );
 }
 
 function my_widgets_init() {
@@ -38,13 +53,7 @@ function my_widgets_init() {
 
 // Actions
 
-add_action( 'pre_get_posts', 'my_ignore_sticky' );
 add_action( 'wp_enqueue_scripts', 'my_scripts' );
-
-function my_ignore_sticky( $query ) {
-	if ( is_home() && $query->is_main_query() )
-		$query->set( 'ignore_sticky_posts', true );
-}
 
 function my_scripts() {
 	wp_deregister_script( 'jquery' );
@@ -73,17 +82,17 @@ function my_post_object_result( $title, $p ) {
 
 // Functions
 
-function my_the_category( $sep = ' – ' ) {
+function my_the_category( $post_obj = '', $sep = ' – ' ) {
 	global $post;
+	if ( ! $post_obj ) $post_obj = $post;
 	$arr = array();
-	$categories = get_the_category();
+	$categories = get_the_category( $post_obj->ID );
 	foreach( $categories as $category )
 		$arr[] = $category->cat_name;
 	echo implode( $sep, $arr );
 }
 
-function my_acf_thumbnail( $image ) {
-	$size = 'hero';
+function my_acf_thumbnail( $image, $size = 'hero' ) {
 	$thumb = $image['sizes'][ $size ];
 	$width = $image['sizes'][ $size . '-width' ];
 	$height = $image['sizes'][ $size . '-height' ];

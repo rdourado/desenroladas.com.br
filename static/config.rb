@@ -9,7 +9,7 @@ images_dir = "../dynamic/wp-content/themes/desenroladas/img"
 javascripts_dir = "../dynamic/wp-content/themes/desenroladas/js"
 fonts_dir = "fonts"
 
-output_style = :nested
+output_style = :compressed
 
 relative_assets = true
 

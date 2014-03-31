@@ -35,10 +35,13 @@ a
 body
 	background: url(../img/bg1.jpg) no-repeat center 0
 .head,
-.main
+.main,
+.weekly
 	margin: 0 auto
 	width: 960px
 .main
+	+pie-clearfix
+	background: #fff
 	text-align: center
 .body, .side
 	text-align: left
@@ -317,6 +320,15 @@ $heroW: 960px
 	font: 27px/1.2 $font2
 	padding: 0 5px 30px
 
+.weekly
+	clear: both
+	margin-bottom: 20px
+	text-align: left
+	img
+		display: block
+		height: auto
+		width: 100%
+
 .ad
 	display: inline-block
 	margin: 30px auto
@@ -344,6 +356,7 @@ $heroW: 960px
 
 .entry
 	margin-bottom: 60px
+.heading,
 .entry-category,
 .related-heading
 	font: 10px/3.4 $font3
@@ -364,6 +377,9 @@ $heroW: 960px
 		left: 0
 		position: absolute
 		width: 12px
+.heading:before
+	bottom: auto
+	top: 0
 .entry-title
 	font: 900 38px/1.2 $font2
 	margin-bottom: 40px
@@ -466,6 +482,11 @@ $heroW: 960px
 	.current
 		color: #000
 		font-weight: 900
+
+.entry-comments
+	+pie-clearfix
+	clear: both
+	margin-bottom: 60px
 
 // Sidebar
 
@@ -577,10 +598,10 @@ $heroW: 960px
 	.widget-title
 		background: #000
 		color: #fff
-		margin: 16px 0 0
+		margin: 0
 		padding: 0 12px
 		&:before
-			top: -16px
+			display: none
 	.about-everyone
 		border-top: 1px solid #000
 		padding-top: 1.5em
