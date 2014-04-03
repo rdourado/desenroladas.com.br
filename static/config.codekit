@@ -87,6 +87,50 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 1
 		},
+	"\/img\/clara-dourado.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 21999,
+		"inputAbbreviatedPath": "\/img\/clara-dourado.jpg",
+		"outputAbbreviatedPath": "\/img\/clara-dourado.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/img\/destaque.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 40152,
+		"inputAbbreviatedPath": "\/img\/destaque.jpg",
+		"outputAbbreviatedPath": "\/img\/destaque.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/img\/gabi-clara.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 35156,
+		"inputAbbreviatedPath": "\/img\/gabi-clara.jpg",
+		"outputAbbreviatedPath": "\/img\/gabi-clara.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/img\/gabi-dourado.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 17050,
+		"inputAbbreviatedPath": "\/img\/gabi-dourado.jpg",
+		"outputAbbreviatedPath": "\/img\/gabi-dourado.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
 	"\/img\/icon-facebook.png": {
 		"fileType": 32768,
 		"ignore": 0,

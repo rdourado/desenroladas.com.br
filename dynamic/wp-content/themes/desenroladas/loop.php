@@ -1,4 +1,4 @@
-				<article class="entry h-entry">
+				<article <?php post_class( 'entry h-entry' ) ?>>
 					<header class="entry-head">
 						<p class="entry-category"><?php the_category( ' – ' ) ?></p>
 						<h2 class="entry-title p-name"><a class="u-url" href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
@@ -8,6 +8,23 @@
 					</header>
 					<div class="content e-content">
 						<?php the_content() ?>
+
+<?php 					if ( get_field( 'users' ) ) : ?>
+						<ul class="bloggers">
+<?php 						while ( has_sub_field( 'users' ) ) :
+							$user = get_userdata( get_sub_field( 'user' ) ); ?>
+							<li class="blogger">
+								<?php my_acf_thumbnail( get_sub_field( 'image' ), 'full' ); ?>
+								<div class="blogger-body">
+									<p><?php echo $user->description; ?></p>
+									<div class="blogger-social">
+										
+									</div>
+								</div>
+							</li>
+<?php 						endwhile; ?>
+						</ul>
+<?php 					endif; ?>
 					</div>
 					<footer class="entry-foot">
 						<?php the_tags( '<p class="entry-tags"><b>Tags:</b> ', ' ', '</p>' ) ?>

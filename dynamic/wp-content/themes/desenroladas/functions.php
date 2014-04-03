@@ -66,8 +66,14 @@ function my_scripts() {
 
 // Filters
 
+add_filter( 'user_contactmethods', 'modify_contact_methods' );
 add_filter( 'acf/fields/post_object/query', 'my_post_object_query', 10, 2 );
 add_filter( 'acf/fields/post_object/result', 'my_post_object_result', 10, 2 );
+
+function modify_contact_methods( $profile_fields ) {
+	$profile_fields['instagram'] = 'URL do perfil do Instagram';
+	return $profile_fields;
+}
 
 function my_post_object_query( $field, $post ) {
 	$field['orderby'] = 'post_date';
