@@ -13,6 +13,7 @@
 						<ul class="bloggers">
 <?php 						while ( has_sub_field( 'users' ) ) :
 							$user = get_userdata( get_sub_field( 'user' ) ); ?>
+							<?php var_dump(get_sub_field( 'image' )); ?>
 							<li class="blogger">
 								<?php my_acf_thumbnail( get_sub_field( 'image' ), 'full' ); ?>
 								<div class="blogger-body">

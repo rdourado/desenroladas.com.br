@@ -98,11 +98,11 @@ function my_the_category( $post_obj = '', $sep = ' – ' ) {
 	echo implode( $sep, $arr );
 }
 
-function my_acf_thumbnail( $image, $size = 'hero' ) {
+function my_acf_thumbnail( $image, $size = 'hero', $class = '' ) {
 	$thumb = $image['sizes'][ $size ];
 	$width = $image['sizes'][ $size . '-width' ];
 	$height = $image['sizes'][ $size . '-height' ];
-	echo '<img alt="" height="' . $height . '" src="' . $thumb . '" width="' . $width . '" />' . "\n";
+	echo '<img alt="" class="' . $class . '" height="' . $height . '" src="' . $thumb . '" width="' . $width . '" />' . "\n";
 }
 
 // Widgets

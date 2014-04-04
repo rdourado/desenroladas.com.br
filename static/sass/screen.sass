@@ -2,11 +2,12 @@
 
 // Fonts
 
-@import url("http://fonts.googleapis.com/css?family=Playfair+Display:400,900,900italic|Titillium+Web:400,300,700,900")
+@import url("http://fonts.googleapis.com/css?family=Playfair+Display:400,900,900italic|Titillium+Web:400,300,700,900|PT+Mono")
 
 $font1: sans-serif
 $font2: "Playfair Display", sans-serif
 $font3: "Titillium Web", sans-serif
+$font4: "PT Mono", sans-serif
 
 // Colors
 
@@ -34,9 +35,7 @@ a
 
 body
 	background: url(../img/bg1.jpg) no-repeat center 0
-.head,
-.main,
-.weekly
+.head, .main, .weekly
 	margin: 0 auto
 	width: 960px
 .main
@@ -487,6 +486,57 @@ $heroW: 960px
 	+pie-clearfix
 	clear: both
 	margin-bottom: 60px
+
+// About
+
+.page-template-about-php
+	.body
+		width: auto
+.about-quote
+	$img: "../img/about.jpg"
+	background: url($img) no-repeat
+	display: table
+	height: image-height($img) - 506 - 78
+	padding: 506px 0 78px
+	width: image-width($img)
+	p
+		color: #473c35
+		display: table-cell
+		font: 22px/2 $font4
+		height: image-height($img) - 506 - 78
+		text-align: center
+		vertical-align: middle
+		+ p
+			display: none
+.bloggers
+	background: #4b4e82
+	color: #fff
+	font: 16px/1.2 $font3
+	padding: 50px 90px 50px 400px
+.blogger
+	position: relative
+	img
+		bottom: -60px
+		left: -310px
+		position: absolute
+	&:first-child
+		margin-bottom: 1.5em
+		img
+			bottom: auto
+			top: -60px
+.content .blogger-social
+	border-top: 1px dashed #fff
+	display: inline-block
+	line-height: 2em
+	margin: 0
+	a
+		border: 0 none
+		display: inline
+		vertical-align: middle
+	img
+		display: inline
+		position: static
+		vertical-align: middle
 
 // Sidebar
 
