@@ -26,7 +26,7 @@
 		}(document, 'script', 'facebook-jssdk'));</script>
 		<!--  -->
 		<header class="head">
-			<h1 class="logo"><a href="<?php bloginfo( 'url' ) ?>"><img alt="<?php bloginfo( 'name' ) ?>" height="100" src="<?php bloginfo( 'template_url' ) ?>/img/logo@2x.png" width="477"></a></h1>
+			<h1 class="logo"><a href="<?php bloginfo( 'url' ) ?>"><img alt="<?php bloginfo( 'name' ) ?>" class="2x" height="100" src="<?php bloginfo( 'template_url' ) ?>/img/logo.png" width="477"></a></h1>
 			<nav class="nav-main">
 				<?php wp_nav_menu( "container=&theme_location=primary&menu_class=menu-main" ) ?>
 

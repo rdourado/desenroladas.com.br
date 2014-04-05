@@ -42,6 +42,10 @@ body
 	+pie-clearfix
 	background: #fff
 	text-align: center
+.head
+	background: url(../img/isa-montenegro.png) no-repeat right -100px
+	&:hover
+		background-position: right 0
 .body, .side
 	text-align: left
 .body
@@ -487,6 +491,16 @@ $heroW: 960px
 	clear: both
 	margin-bottom: 60px
 
+// Page
+
+.type-page
+	.entry-head
+		padding: 90px 90px 0
+	.content
+		p
+			padding-left: 90px
+			padding-right: 90px
+
 // About
 
 .page-template-about-php
@@ -497,6 +511,8 @@ $heroW: 960px
 	background: url($img) no-repeat
 	display: table
 	height: image-height($img) - 506 - 78
+	margin-bottom: 30px
+	margin-top: -430px
 	padding: 506px 0 78px
 	width: image-width($img)
 	p
@@ -508,35 +524,98 @@ $heroW: 960px
 		vertical-align: middle
 		+ p
 			display: none
-.bloggers
-	background: #4b4e82
-	color: #fff
-	font: 16px/1.2 $font3
-	padding: 50px 90px 50px 400px
-.blogger
-	position: relative
-	img
-		bottom: -60px
-		left: -310px
-		position: absolute
-	&:first-child
-		margin-bottom: 1.5em
+.content
+	.half-col
+		position: relative
+		width: 320px
+	.bloggers
+		background: #4b4e82
+		color: #fff
+		font: 15px/1.2 $font3
+		margin-bottom: 30px
+		margin-top: 30px * 3
+		padding: 50px 90px 30px 400px
+	.blogger
+		min-height: 240px
+		position: relative
+		p
+			padding: 0
 		img
-			bottom: auto
-			top: -60px
-.content .blogger-social
-	border-top: 1px dashed #fff
-	display: inline-block
-	line-height: 2em
-	margin: 0
-	a
+			top: 0
+			left: -310px
+			position: absolute
+			+rotate(-0.85deg)
+		&:first-child
+			margin-bottom: 1.5em
+			img
+				bottom: auto
+				top: -60px
+				+rotate(-3.2deg)
+	.blogger-social
+		border-top: 1px dashed #fff
+		display: inline-block
+		line-height: 2em
+		margin: 0
+		a
+			border: 0 none
+			display: inline
+			vertical-align: middle
+		img
+			display: inline
+			position: static
+			vertical-align: middle
+			+rotate(0deg)
+
+	.contributors
+		+pie-clearfix
+		margin: (30px * 2) auto 300px
+		width: 756px
+	.contributor-item
+		float: left
+		margin: 0 6px 12px
+		position: relative
+		img
+			display: block
+		&:hover
+			z-index: 90
+			.contributor-info
+				display: block
+	.contributor-info
+		background: #fff
+		display: none
+		left: -58px
+		padding: 35px
+		// pointer-events: none
+		position: absolute
+		top: -58px
+		width: 160px
+		+pie-clearfix
+		+single-box-shadow(rgba(#000,.3), 0, 0, 14px)
+		p
+			font: 18px/1.2 $font3
+			margin-bottom: 30px
+			padding: 0
+			strong, b
+				font-family: $font2
+		a
+			border: 0 none
+			// pointer-events: auto
+		img
+			display: block
+			margin: 0 auto 30px
+	.contributor-link
+		background: #000
 		border: 0 none
-		display: inline
-		vertical-align: middle
-	img
-		display: inline
-		position: static
-		vertical-align: middle
+		color: #fff
+		display: inline-block
+		font: 11px/24px $font3
+		padding: 0 10px
+		text-transform: uppercase
+	.contributor-social
+		float: right
+		img
+			display: inline
+			margin: 0
 
 // Sidebar
 
@@ -666,6 +745,9 @@ $heroW: 960px
 // Retina
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 
+	.head
+		background-image: url(../img/isa-montenegro@2x.png)
+		+background-size(image-width("../img/isa-montenegro.png") image-height("../img/isa-montenegro.png"))
 	.widget select
 		background-image: url(../img/arrow@2x.png)
 		+background-size(image-width("../img/arrow.png") image-height("../img/arrow.png"))

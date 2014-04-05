@@ -27,16 +27,17 @@ function my_setup() {
 	) );
 
 	// Background
-	$defaults = array(
+	add_theme_support( 'custom-background', array(
 		'default-color'          => 'ffffff',
 		'default-image'          => get_stylesheet_directory_uri() . '/img/bg1.jpg',
 		'default-repeat'         => 'no-repeat',
 		'default-position-x'     => 'center',
-		// 'wp-head-callback'       => '_custom_background_cb',
-		// 'admin-head-callback'    => '',
-		// 'admin-preview-callback' => ''
-	);
-	add_theme_support( 'custom-background', $defaults );
+	) );
+
+	// HTML 5
+	add_theme_support( 'html5', array(
+		'search-form', 'comment-form', 'comment-list',
+	) );
 }
 
 function my_widgets_init() {
@@ -61,6 +62,7 @@ function my_scripts() {
 	wp_enqueue_script( 'jquery' );
 	
 	wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() . '/js/scripts.min.js', array( 'jquery' ), filemtime( TEMPLATEPATH . '/js/scripts.min.js' ), true );
+	wp_enqueue_script( 'diario', 'http://blogs.diariodonordeste.com.br/barra/js/barra-diario.min.js', array( 'scripts' ), null, true );
 }
 
 
@@ -69,6 +71,7 @@ function my_scripts() {
 add_filter( 'user_contactmethods', 'modify_contact_methods' );
 add_filter( 'acf/fields/post_object/query', 'my_post_object_query', 10, 2 );
 add_filter( 'acf/fields/post_object/result', 'my_post_object_result', 10, 2 );
+add_filter( 'sanitize_file_name', 'make_filename_hash', 10 );
 
 function modify_contact_methods( $profile_fields ) {
 	$profile_fields['instagram'] = 'URL do perfil do Instagram';
@@ -84,6 +87,13 @@ function my_post_object_query( $field, $post ) {
 function my_post_object_result( $title, $p ) {
 	$date = date( 'j M y', strtotime( $p->post_date ) );
 	return "{$date} – {$title}";
+}
+
+function make_filename_hash( $filename ) {
+	$info = pathinfo( $filename );
+	$ext  = empty( $info['extension'] ) ? '' : '.' . $info['extension'];
+	$name = basename( $filename, $ext );
+	return md5( $name ) . $ext;
 }
 
 // Functions
@@ -127,6 +137,8 @@ class About_Widget extends WP_Widget {
 		$link1 = esc_url( $instance['link1'] );
 		$link2 = esc_url( $instance['link2'] );
 
+		$users = new WP_User_Query( array( 'role' => 'Contributor', 'number' => 1, 'orberby' => 'rand' ) );
+
 		echo $args['before_widget'];
 		if ( ! empty( $title ) )
 			echo $args['before_title'] . $title . $args['after_title'];
@@ -135,11 +147,13 @@ class About_Widget extends WP_Widget {
 			<?php echo $text1; ?>
 		</a>
 		<a class="about-everyone" href="<?php echo $link2 ? $link2 : $link1; ?>">
+			<?php foreach( $users->results as $user ) : ?>
 			<figure class="about-collaborators">
-				<img alt="" class="collaborator-image" height="69" src="http://dummyimage.com/69x69" width="69">
-				<figcaption class="collaborator-caption">Iury Costa</figcaption>
+				<?php echo get_avatar( $user->user_email, 69, 'identicon' ); ?>
+				<figcaption class="collaborator-caption"><?php echo $user->display_name; ?></figcaption>
 			</figure>
 			<?php echo $text2; ?>
+			<?php endforeach; ?>
 		</a>
 		<?php
 		echo $args['after_widget'];
