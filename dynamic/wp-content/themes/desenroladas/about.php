@@ -35,7 +35,7 @@ Template name: About
 
 <?php 				$users = new WP_User_Query( array( 'role' => 'Contributor' ) );
 					if ( $users->results ) : ?>
-					<div class="entry-head">
+					<div class="entry-head" id="colaboradores">
 						<p class="heading" lang="en">about</p>
 						<h2 class="entry-title">Colaboradores</h2>
 					</div>

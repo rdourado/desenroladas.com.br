@@ -1,0 +1,59 @@
+html .mceContentBody {
+	font-size: 100%;
+	max-width: 620px;
+}
+
+body {
+	color: #000;
+	font: 300 18px/1.5 "Titillium Web", sans-serif;
+	vertical-align: baseline;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+p, ul, ol {
+	font: 300 18px/1.5 "Titillium Web", sans-serif;
+	margin-bottom: 1.5em;
+}
+p a,  p em,  p i,  p strong,  p b,
+ul a, ul em, ul i, ul strong, ul b,
+ol a, ol em, ol i, ol strong, ol b {
+	font-family: "Playfair Display", sans-serif;
+	font-style: italic;
+	font-weight: 900;
+}
+
+a {
+	border-bottom: 1px dotted #000;
+	color: #000;
+}
+a:hover, a:focus, a:active {
+	border-bottom-style: solid;
+}
+img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+h2, h3 {
+	font: 900 24px/1.125 "Playfair Display", sans-serif;
+	margin-bottom: 1.125em;
+}
+h4, h5, h6 {
+	font: 700 24px/1.125 "Titillium Web", sans-serif;
+	margin-bottom: 1.125em;
+}
+
+.alignleft {
+	float: left;
+	margin-right: 20px;
+}
+.alignright {
+	float: right;
+	margin-left: 20px;
+}
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

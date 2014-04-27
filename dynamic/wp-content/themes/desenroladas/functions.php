@@ -38,6 +38,11 @@ function my_setup() {
 	add_theme_support( 'html5', array(
 		'search-form', 'comment-form', 'comment-list',
 	) );
+
+	// This theme styles the visual editor to resemble the theme style.
+	$font_url = add_query_arg( 'family', urlencode( 'Playfair+Display:400,900,900italic|Titillium+Web:400,300,700,900|PT+Mono' ), "//fonts.googleapis.com/css" );
+	add_editor_style( array( 'css/editor.css', $font_url ) );
+
 }
 
 function my_widgets_init() {
@@ -68,10 +73,15 @@ function my_scripts() {
 
 // Filters
 
+add_filter( 'embed_defaults', 'my_embed_defaults' );
 add_filter( 'user_contactmethods', 'modify_contact_methods' );
 add_filter( 'acf/fields/post_object/query', 'my_post_object_query', 10, 2 );
 add_filter( 'acf/fields/post_object/result', 'my_post_object_result', 10, 2 );
 add_filter( 'sanitize_file_name', 'make_filename_hash', 10 );
+
+function my_embed_defaults() {
+	return array( 'width' =>  620, 'height' => 420 );
+}
 
 function modify_contact_methods( $profile_fields ) {
 	$profile_fields['instagram'] = 'URL do perfil do Instagram';
@@ -137,7 +147,10 @@ class About_Widget extends WP_Widget {
 		$link1 = esc_url( $instance['link1'] );
 		$link2 = esc_url( $instance['link2'] );
 
-		$users = new WP_User_Query( array( 'role' => 'Contributor', 'number' => 1, 'orberby' => 'rand' ) );
+		$users = new WP_User_Query( array( 'role' => 'Contributor', 'number' => 10, 'orberby' => 'rand' ) );
+		$users = $users->results;
+		shuffle( $users );
+		$users = array_slice( $users, 0, 1 );
 
 		echo $args['before_widget'];
 		if ( ! empty( $title ) )
@@ -147,7 +160,7 @@ class About_Widget extends WP_Widget {
 			<?php echo $text1; ?>
 		</a>
 		<a class="about-everyone" href="<?php echo $link2 ? $link2 : $link1; ?>">
-			<?php foreach( $users->results as $user ) : ?>
+			<?php foreach( $users as $user ) : ?>
 			<figure class="about-collaborators">
 				<?php echo get_avatar( $user->user_email, 69, 'identicon' ); ?>
 				<figcaption class="collaborator-caption"><?php echo $user->display_name; ?></figcaption>

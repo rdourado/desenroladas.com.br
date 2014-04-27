@@ -32,7 +32,15 @@
 					</div>
 					<footer class="entry-foot">
 						<?php the_tags( '<p class="entry-tags"><b>Tags:</b> ', ' ', '</p>' ) ?>
-						<p class="entry-share"></p>
+						<div class="entry-share">
+							<div class="tw">
+								<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo wp_get_shortlink(); ?>" data-text="<?php the_title_attribute() ?>" data-via="desenroladas" data-related="desenroladas" data-lang="pt">Tweetar</a>
+								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+							</div>
+							<div class="fb">
+								<div class="fb-share-button" data-href="<?php the_permalink(); ?>" data-type="button_count"></div>
+							</div>
+						</div>
 					</footer>
 				</article>
 <?php 			if ( is_single() ) : ?>
