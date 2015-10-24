@@ -6,13 +6,13 @@
 				<div class="viewport">
 					<ul class="hero-list overview">
 <?php 					$total = 0;
-						while ( has_sub_field( 'primary', 'options' ) ) : 
+						while ( has_sub_field( 'primary', 'options' ) ) :
 						$total++;
 						$post_obj = get_sub_field( 'artigo' );
 						$class = array( get_sub_field( 'cor' ), get_sub_field( 'posicao' ) );
-						$class = array_filter( $class ); 
+						$class = array_filter( $class );
 						$sep = ' hero-';
-						if ( $class ) 
+						if ( $class )
 							$class = $sep . implode( $sep, $class ); ?>
 						<li class="hero-item<?php echo $class; ?>">
 							<a href="<?php echo get_permalink( $post_obj ); ?>">
@@ -56,17 +56,19 @@
 <?php 		while ( has_sub_field( 'tertiary', 'options' ) ) :
 			$post_obj = get_sub_field( 'artigo' ); ?>
 			<hr>
+<?php if ( ! get_option( 'hide-weekly', 'option' ) ) : ?>
 			<div class="weekly">
 				<h3 class="heading">Coluna mais recente</h3>
 				<a href="<?php echo get_permalink( $post_obj ); ?>"><?php my_acf_thumbnail( get_sub_field( 'imagem' ), 'huge' ); ?></a>
 			</div>
+<?php endif; ?>
 <?php 		endwhile; ?>
 			<!-- <div class="ad">
 				<img alt="" height="90" src="http://dummyimage.com/728x90" width="728">
 			</div>
 			<hr> -->
 			<div class="body">
-<?php 			while( have_posts() ) : 
+<?php 			while( have_posts() ) :
 					the_post();
 					get_template_part( 'loop', 'post' );
 				endwhile; ?>
@@ -75,7 +77,7 @@
 					if ( $tags ) :
 						$tag_ids = array();
 						foreach ( $tags as $individual_tag )
-							$tag_ids[] = $individual_tag->term_id;  
+							$tag_ids[] = $individual_tag->term_id;
 						$args = array(
 							'tag__in'             => $tag_ids,
 							'post__not_in'        => array( $post->ID ),

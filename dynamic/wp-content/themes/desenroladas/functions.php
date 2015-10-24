@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $date_format = get_option( 'date_format' );
 
@@ -65,9 +65,10 @@ function my_scripts() {
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', 'http://code.jquery.com/jquery-1.10.1.min.js', false, null, true );
 	wp_enqueue_script( 'jquery' );
-	
+
 	wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() . '/js/scripts.min.js', array( 'jquery' ), filemtime( TEMPLATEPATH . '/js/scripts.min.js' ), true );
-	wp_enqueue_script( 'diario', 'http://blogs.diariodonordeste.com.br/barra/js/barra-diario.min.js', array( 'scripts' ), null, true );
+	// wp_enqueue_script( 'diario', 'http://blogs.diariodonordeste.com.br/barra/js/barra-diario.min.js', array( 'scripts' ), null, true );
+	wp_enqueue_script( 'tribuna', 'http://afiliados.tribunadoceara.com.br/js/barra_afiliados_v2.js', array( 'scripts' ), null, true );
 }
 
 
@@ -183,30 +184,30 @@ class About_Widget extends WP_Widget {
 		$link2 = isset( $instance[ 'link2' ] ) ? esc_url( $instance[ 'link2' ] ) : '';
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Título:</label> 
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Título:</label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-		
+
 		<p><strong>Sobre</strong></p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'text1' ); ?>">Sobre (html):</label> 
+		<label for="<?php echo $this->get_field_id( 'text1' ); ?>">Sobre (html):</label>
 		<textarea name="<?php echo $this->get_field_name( 'text1' ); ?>" id="<?php echo $this->get_field_id( 'text1' ); ?>" cols="30" rows="6" class="widefat"><?php echo esc_attr( $text1 ); ?></textarea>
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'link1' ); ?>">Linkar para:</label> 
+		<label for="<?php echo $this->get_field_id( 'link1' ); ?>">Linkar para:</label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'link1' ); ?>" name="<?php echo $this->get_field_name( 'link1' ); ?>" type="text" value="<?php echo esc_attr( $link1 ); ?>">
 		</p>
-		
+
 		<p><strong>Colaboradores</strong></p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'text2' ); ?>">Texto (html):</label> 
+		<label for="<?php echo $this->get_field_id( 'text2' ); ?>">Texto (html):</label>
 		<textarea name="<?php echo $this->get_field_name( 'text2' ); ?>" id="<?php echo $this->get_field_id( 'text2' ); ?>" cols="30" rows="3" class="widefat"><?php echo esc_attr( $text2 ); ?></textarea>
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'link2' ); ?>">Linkar para:</label> 
+		<label for="<?php echo $this->get_field_id( 'link2' ); ?>">Linkar para:</label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'link2' ); ?>" name="<?php echo $this->get_field_name( 'link2' ); ?>" type="text" value="<?php echo esc_attr( $link2 ); ?>">
 		</p>
-		<?php 
+		<?php
 	}
 
 	/**

@@ -1,4 +1,5 @@
 <?php get_header() ?>
+<?php if ( ! get_option( 'hide-weekly', 'option' ) ) : ?>
 <?php 	while ( has_sub_field( 'tertiary', 'options' ) ) :
 		$post_obj = get_sub_field( 'artigo' ); ?>
 		<div class="weekly">
@@ -6,9 +7,10 @@
 		</div>
 		<hr>
 <?php 	endwhile; ?>
+<?php endif; ?>
 		<main class="main">
 			<div class="body">
-<?php 			while( have_posts() ) : 
+<?php 			while( have_posts() ) :
 					the_post();
 					get_template_part( 'loop', 'post' );
 				endwhile; ?>
@@ -16,7 +18,7 @@
 				if ( $tags ) :
 					$tag_ids = array();
 					foreach ( $tags as $individual_tag )
-						$tag_ids[] = $individual_tag->term_id;  
+						$tag_ids[] = $individual_tag->term_id;
 					$args = array(
 						'tag__in'             => $tag_ids,
 						'post__not_in'        => array( $post->ID ),
