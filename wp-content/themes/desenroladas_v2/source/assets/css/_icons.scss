@@ -1,0 +1,68 @@
+@font-face {
+	font-family: "iconfont";
+	src: url("../fonts/iconfont.eot?a4e6e64f911f0d35766a62d432b82aa2?#iefix") format("embedded-opentype"),
+url("../fonts/iconfont.woff2?a4e6e64f911f0d35766a62d432b82aa2") format("woff2"),
+url("../fonts/iconfont.woff?a4e6e64f911f0d35766a62d432b82aa2") format("woff"),
+url("../fonts/iconfont.ttf?a4e6e64f911f0d35766a62d432b82aa2") format("truetype"),
+url("../fonts/iconfont.svg?a4e6e64f911f0d35766a62d432b82aa2#iconfont") format("svg");
+}
+
+@mixin icon-styles {
+	font-family: "iconfont";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	speak: none;
+	text-decoration: none;
+	text-transform: none;
+}
+
+%icon {
+	@include icon-styles;
+}
+
+@function icon-char($filename) {
+	$char: "";
+	@if $filename == arrow {
+		$char: "\f101";
+	}
+	@if $filename == close {
+		$char: "\f102";
+	}
+	@if $filename == facebook {
+		$char: "\f103";
+	}
+	@if $filename == instagram {
+		$char: "\f104";
+	}
+	@if $filename == lens {
+		$char: "\f105";
+	}
+	@if $filename == pinterest {
+		$char: "\f106";
+	}
+	@if $filename == sandwich {
+		$char: "\f107";
+	}
+	@if $filename == tumblr {
+		$char: "\f108";
+	}
+	@if $filename == twitter {
+		$char: "\f109";
+	}
+
+	@return $char;
+}
+
+@mixin icon($filename, $insert: before, $extend: true) {
+	&:#{$insert} {
+		@if $extend {
+			@extend %icon;
+		} @else {
+			@include icon-styles;
+		}
+		content: icon-char($filename);
+	}
+}

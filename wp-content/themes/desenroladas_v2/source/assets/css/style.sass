@@ -1,0 +1,1076 @@
+@import "icons"
+
+//
+
+$metal: #1d1d1b
+$radar: #afbf91
+$viagem: #95b7a4
+$musica: #aedad9
+$cultura: #deb8d8
+$estilo: #e6a1a1
+$beleza: #fbbe62
+$sans: Ubuntu, sans-serif
+$base-font-size: 16px
+$xl: 10px
+$lg: 10px
+$md: 10px
+$sm: 10px
+$xs: 10px
+
+//
+
+@function strip-units($number)
+	@return $number / ($number * 0 + 1)
+
+@function em($px, $base: $base-font-size)
+	@return ((strip-units($px) * 1px) / (strip-units($base) * 1px)) * 1em
+
+@function col($columns: 1, $total: 12)
+	@return (100% / $total) * $columns
+
+@function gut($total: 12)
+	@return (100% / $total) / 6
+
+//
+
+=breakpoint($bp)
+	@if $bp == xs
+		@media (max-width: 575px)
+			@content
+	@elseif $bp == sm
+		@media (max-width: 767px)
+			@content
+	@elseif $bp == md
+		@media (max-width: 991px)
+			@content
+	@elseif $bp == lg
+		@media (max-width: 1199px)
+			@content
+	@elseif $bp = xl
+		@media (max-width: 1681px)
+			@content
+
+=stretch($top: 0, $right: 0, $bottom: 0, $left: 0)
+	position: absolute
+	@if $top
+		top: $top
+	@if $bottom
+		bottom: $bottom
+	@if $left
+		left: $left
+	@if $right
+		right: $right
+
+=stretch-x($left: 0, $right: 0)
+	+stretch(false, $right, false, $left)
+
+=stretch-y($top: 0, $bottom: 0)
+	+stretch($top, false, $bottom, false)
+
+//
+
+%clearfix
+	&:after
+		clear: both
+		content: ""
+		display: table
+
+%reset
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+
+%reset-list
+	@extend %reset
+	list-style: none
+
+%reset-button
+	@extend %reset
+	background: none
+	border: 0 none
+	cursor: pointer
+
+%max-width
+	box-sizing: border-box
+	margin: 0 auto
+	max-width: em(1920)
+
+//
+
+html
+	@extend %reset
+	height: 100%
+
+body
+	@extend %reset
+	background: #f2f2f2
+	color: $metal
+	font: $base-font-size sans-serif
+	min-height: 100%
+	+breakpoint(xl)
+		font-size: $xl
+	+breakpoint(lg)
+		font-size: $lg
+	+breakpoint(md)
+		font-size: $md
+	+breakpoint(sm)
+		font-size: $sm
+	+breakpoint(sm)
+		font-size: $xs
+	&.single,
+	&.category
+		background: rgba($viagem, 0.5)
+		&.category-radar
+			background: rgba($radar, 0.5)
+		&.category-musica
+			background: rgba($musica, 0.5)
+		&.category-cultura
+			background: rgba($cultura, 0.5)
+		&.category-estilo
+			background: rgba($estilo, 0.5)
+		&.category-beleza
+			background: rgba($beleza, 0.5)
+
+//
+
+.grid
+	bottom: 0
+	display: flex
+	justify-content: space-around
+	left: 0
+	margin: 0 auto
+	max-width: em(1920)
+	pointer-events: none
+	position: fixed
+	right: 0
+	top: 0
+	z-index: 999
+	&__col
+		background: rgba(#f00, 0.05)
+		height: 100%
+		width: col() - gut() * 2
+
+//
+
+.layout
+	display: flex
+	flex-direction: column
+	justify-content: flex-start
+	&__body
+		flex-grow: 1
+	&__foot
+		margin-top: auto
+	&__hr
+		display: none
+
+//
+
+.head
+	background: $metal
+	color: #fff
+	left: 0
+	position: fixed
+	right: 0
+	top: 0
+	z-index: 90
+	+breakpoint(sm)
+		background: #fff
+	.admin-bar &
+		top: 32px
+		@media screen and (max-width: 782px)
+			top: 46px
+		@media screen and (max-width: 600px)
+			top: 0
+	&__wrap
+		@extend %max-width
+		align-items: center
+		display: flex
+	&__find
+		order: 2
+		+breakpoint(sm)
+			margin-left: auto
+	&__nav
+		order: 1
+	&__social
+		justify-content: flex-end
+		margin-left: auto
+		margin-right: gut()
+		order: 3
+		+breakpoint(sm)
+			&.social
+				display: none
+
+//
+
+.body
+	padding-top: em(86)
+	+breakpoint(sm)
+		padding-top: em(180)
+	&__wrap
+		@extend %max-width
+		@extend %clearfix
+	&__content
+		float: left
+		width: col(8)
+	&__sidebar
+		float: right
+		width: col(4)
+	&__navigation
+		$fs: 30
+		display: flex
+		font: bold em($fs) $sans
+		justify-content: space-between
+		line-height: 1em
+		margin: em(150, $fs) gut()
+		text-transform: uppercase
+		a
+			align-items: center
+			color: inherit
+			display: flex
+			letter-spacing: .2em
+			text-decoration: none
+		a[rel="next"]
+			+icon(arrow)
+			order: 1
+			&:before
+				margin-right: .6em
+				transform: rotate(180deg)
+		a[rel="prev"]
+			+icon(arrow, after)
+			margin-left: auto
+			order: 2
+			&:after
+				margin-left: .6em
+
+//
+
+.foot
+	background: $metal
+	color: #fff
+	padding: em(80) 0
+	&__wrap
+		@extend %max-width
+	&__by,
+	&__social,
+	&__copyright
+		margin-left: gut()
+		margin-right: gut()
+		+breakpoint(sm)
+			margin-left: (col() + gut())
+			margin-right: (col() + gut())
+	&__social
+		margin-top: em(40)
+	&__copyright
+		$fs: 27
+		color: inherit
+		display: inline-block
+		font: bold em($fs) $sans
+		margin-top: em(40, $fs)
+		text-decoration: none
+		+breakpoint(sm)
+			margin-top: 2em
+		&:hover, &:focus
+			text-decoration: underline
+
+//
+
+.nav-head
+	position: relative
+	&__toggle
+		@extend %reset-button
+		+icon(sandwich)
+		$fs: 26
+		color: inherit
+		display: inline-block
+		font-size: em($fs)
+		outline: none
+		padding: 0 1em
+		text-align: center
+		width: em(80, $fs)
+		&:before
+			display: inline-block
+			line-height: em(86, $fs)
+		+breakpoint(sm)
+			color: $metal
+			font-size: em(30)
+			&:before
+				line-height: em(120, 30)
+			.nav-head--toggled &
+				+icon(close)
+		span
+			display: none
+	&__wrap
+		background: $metal
+		display: none
+		left: 0
+		position: absolute
+		top: 100%
+		white-space: nowrap
+		+breakpoint(sm)
+			position: fixed
+			right: 0
+			top: em(120)
+		.nav-head--toggled &
+			display: block
+	$fs: 24
+	&__list
+		@extend %reset-list
+		.menu-item a
+			color: inherit
+			display: block
+			font: bold em($fs) $sans
+			line-height: em(30, $fs)
+			padding: em(15, $fs) em(35, $fs)
+			text-decoration: none
+			text-transform: uppercase
+			+breakpoint(sm)
+				padding: em(30, $fs) (col() + gut())
+	&__close
+		@extend %reset-button
+		color: inherit
+		display: block
+		font: bold em($fs) $sans
+		line-height: em(30, $fs)
+		padding: 0 em(30, $fs) em(15, $fs)
+		text-align: right
+		width: 100%
+		+breakpoint(sm)
+			display: none
+
+//
+
+.find
+	align-items: center
+	display: flex
+	&__fs
+		@extend %reset
+		border: 0 none
+		+breakpoint(sm)
+			background: $metal
+			display: none
+			left: 0
+			padding: em(30) (col() + gut())
+			position: fixed
+			right: 0
+			top: em(120)
+			.find--toggled &
+				display: block
+	&__title
+		display: none
+	&__toggle
+		@extend .nav-head__toggle
+		+icon(lens)
+		&:before
+			+breakpoint(sm)
+				color: $metal
+	&__input
+		@extend %reset
+		appearance: none
+		background: $metal
+		border: 0 none
+		border-bottom: 2px solid #fff
+		color: #fff
+		display: none
+		font: bold em(24) $sans
+		outline: none
+		padding: .25em 0
+		width: 14em
+		+breakpoint(sm)
+			padding: .5em 0
+			width: 100%
+		.find--toggled &
+			display: block
+	&__submit
+		display: none
+
+//
+
+.social
+	@extend %reset-list
+	align-items: center
+	display: flex
+	span
+		display: none
+	.menu-item
+		a
+			color: inherit
+			display: inline-block
+			text-align: center
+			text-decoration: none
+			width: 3em
+		&--facebook a
+			+icon(facebook)
+			&:before
+				font-size: em(32)
+				line-height: em(60, 32)
+		&--twitter a
+			+icon(twitter)
+			&:before
+				font-size: em(26)
+				line-height: em(60, 26)
+		&--instagram a
+			+icon(instagram)
+			&:before
+				font-size: em(30)
+				line-height: em(60, 30)
+
+//
+
+.logo
+	display: flex
+	margin: em(100) auto
+	+breakpoint(sm)
+		left: col(3) + gut()
+		margin: 0 auto
+		position: fixed
+		right: col(3) + gut()
+		top: em(120/2, 30)
+		transform: translateY(-55%)
+		z-index: 95
+	&__link
+		font: 0/0 serif
+		margin: 0 auto
+		width: col(6)
+		+breakpoint(sm)
+			width: 100%
+		&:before
+			background: url(../img/logo.svg) no-repeat center center
+			background-size: contain
+			content: ""
+			display: block
+			padding-top: percentage(264/950)
+
+//
+
+.menu
+	margin: em(100) auto
+	+breakpoint(sm)
+		display: none
+	&__list
+		$fs: 24
+		@extend %reset-list
+		align-items: flex-start
+		display: flex
+		justify-content: center
+		text-transform: uppercase
+		a
+			color: inherit
+			display: inline-block
+			font: bold em($fs) $sans
+			text-decoration: none
+			line-height: em(30, $fs)
+			transition: color .25s ease-out
+			&:hover, &:focus
+				color: $viagem
+		.menu-item
+			margin: 0 col(0.2)
+			position: relative
+			z-index: 50
+			&--radar
+				a:hover, a:focus
+					color: $radar
+			&--musica
+				a:hover, a:focus
+					color: $musica
+			&--cultura
+				a:hover, a:focus
+					color: $cultura
+			&--estilo
+				a:hover, a:focus
+					color: $estilo
+			&--beleza
+				a:hover, a:focus
+					color: $beleza
+			&:hover .sub-menu
+				display: block
+		.current-menu-item > a
+			border-bottom: em(7, $fs) solid $metal
+	.sub-menu
+		$fs: 21
+		@extend %reset-list
+		background: $metal
+		color: #fff
+		display: none
+		font: 500 em($fs, 24) $sans
+		left: 0
+		margin-top: -1px
+		position: absolute
+		top: 100%
+		a
+			display: block
+			line-height: em(40, $fs)
+			padding: em(10, $fs) 0
+			text-decoration: none
+		.menu-item
+			margin: 0 em(15, $fs)
+			~ .menu-item
+				border-top: 1px solid #fff
+
+//
+
+.entries
+	align-items: flex-start
+	display: flex
+	flex-wrap: wrap
+	&__item
+		background: $viagem
+		margin: 0 gut() (gut() * 2)
+		position: relative
+		width: col(4) - gut() * 2
+		+breakpoint(sm)
+			margin: 0 (col() + gut()) col()
+			width: col(10) - gut() * 2
+		.body__content &
+			margin: 0 gut(8) (gut(8) * 2)
+			width: col(4, 8) - gut(8) * 2
+			&--large
+				width: col(8, 8) - gut(8) * 2
+		&.category-radar
+			background-color: $radar
+		&.category-musica
+			background-color: $musica
+		&.category-cultura
+			background-color: $cultura
+		&.category-estilo
+			background-color: $estilo
+		&.category-beleza
+			background-color: $beleza
+	&__link
+		color: inherit
+		display: block
+		padding-bottom: em(35)
+		text-decoration: none
+	&__thumb
+		display: block
+		height: auto
+		width: 100%
+	&__title
+		@extend %reset
+		$fs: 36
+		font: bold em($fs) $sans
+		line-height: em(42, $fs)
+		margin: em(35, $fs)
+		margin-bottom: 0
+	&__excerpt
+		@extend %reset
+		$fs: 22
+		font: em($fs) $sans
+		line-height: em(26, $fs)
+		margin: 1em em(35, $fs) 0
+
+//
+
+.trend
+	&__heading
+		@extend %reset
+		font: bold em(30) $sans
+		letter-spacing: .2em
+		margin: 0 gut(4) 1em
+		text-transform: uppercase
+	&__list
+		@extend %reset-list
+	&__item
+		margin-bottom: gut(4) * 2
+	&__link
+		align-items: stretch
+		color: inherit
+		display: flex
+		justify-content: center
+		text-decoration: none
+	&__thumb
+		background-position: center center
+		background-repeat: no-repeat
+		background-size: cover
+		width: col(2,4) - gut(4) * 2
+		&:before
+			content: ""
+			display: block
+			padding-top: 100%
+	&__title
+		@extend %reset
+		$fs: 30
+		background: $cultura
+		font: bold em($fs) $sans
+		line-height: em(36, $fs)
+		padding: 1em
+		width: col(2,4)
+
+//
+
+.by
+	@extend %reset
+	align-items: center
+	color: inherit
+	display: flex
+	+breakpoint(sm)
+		display: block
+	span
+		display: none
+	&__logo
+		display: inline-block
+		width: em(344)
+		&:before
+			background: url(../img/logo2.svg) no-repeat center
+			background-size: contain
+			content: ""
+			display: block
+			padding-top: percentage(68/344)
+	&__names
+		color: inherit
+		font: em(27) $sans
+		margin-left: .6em
+		+breakpoint(sm)
+			display: block
+			margin-left: 0
+			margin-top: 1em
+
+//
+
+.nav-foot
+	@extend %reset-list
+	display: flex
+	margin: em(40) gut() 0
+	+breakpoint(sm)
+		margin-left: (col() + gut())
+		margin-right: (col() + gut())
+	.menu-item
+		font: bold em(27) $sans
+		~ .menu-item
+			margin-left: 1em
+	a
+		color: inherit
+		text-decoration: none
+		&:hover, &:focus
+			text-decoration: underline
+
+//
+
+.article
+	@extend %max-width
+	&__title
+		@extend %reset
+		$fs: 66
+		font: bold em($fs) $sans
+		line-height: em(86, $fs)
+		margin: 0 gut()
+		text-align: center
+	&__meta
+		$fs: 26
+		display: flex
+		font: em($fs) $sans
+		justify-content: center
+		margin: em(10, $fs) gut() em(80, $fs)
+		text-align: center
+		text-transform: uppercase
+	&__author
+		@extend %reset
+	&__date
+		@extend %reset
+		&:before
+			content: "-"
+			margin: 0 .5em
+	&__body
+		$fs: 36
+		font: em($fs) $sans
+		line-height: em(48, $fs)
+		margin: 0 gut()
+		+breakpoint(sm)
+			font-size: em(16, $xs)
+			line-height: em(24, 16)
+			margin: 0 (col() + gut())
+		p, ul, ol,
+		h1, h2, h3,
+		h4, h5, h6,
+		blockquote
+			@extend %reset-list
+		p, ul, ol,
+		blockquote
+			margin-bottom: em(48, $fs)
+		blockquote p
+			font: bold italic em(48, $fs) $sans
+			line-height: 1em
+		a
+			color: inherit
+			font-style: italic
+			font-weight: bold
+			text-decoration: underline
+		img
+			height: auto
+			max-width: 100%
+			vertical-align: bottom
+		.size-full
+			display: block
+			width: 100%
+	&__footer
+		margin: em(80) gut()
+		+breakpoint(sm)
+			margin-left: col() + gut()
+			margin-right: col() + gut()
+		&:before
+			background: $metal
+			content: ""
+			display: block
+			height: em(7)
+			margin-bottom: em(80)
+			width: em(134)
+	&__tags
+		@extend %reset
+		$fs: 30
+		font: em($fs) $sans
+		letter-spacing: .2em
+		margin-bottom: em(40, $fs)
+		text-transform: uppercase
+		a
+			color: inherit
+			text-decoration: none
+			&:hover, &:focus
+				text-decoration: underline
+
+//
+
+.share
+	@extend %reset
+	align-items: center
+	display: flex
+	text-transform: uppercase
+	span
+		display: none
+	&__heading
+		font: bold em(24) $sans
+	&__link
+		color: inherit
+		margin-left: 3em
+		text-decoration: none
+		&:before
+			display: inline-block
+			font-size: em(34)
+			line-height: em(40, 34)
+		&--facebook
+			+icon(facebook)
+		&--pinterest
+			+icon(pinterest)
+		&--twitter
+			+icon(twitter)
+			&:before
+				font-size: em(28)
+		&--tumblr
+			+icon(tumblr)
+			&:before
+				font-size: em(32)
+
+//
+
+.related
+	@extend %max-width
+	margin-bottom: em(150)
+	margin-top: em(200)
+	&__heading
+		@extend %reset
+		font: bold em(48) $sans
+		letter-spacing: .2em
+		margin: 0 gut() 1.5em
+		text-transform: uppercase
+	&__list
+		@extend %reset-list
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-around
+	&__item
+		background: $metal
+		color: #fff
+		position: relative
+		width: col(3) - gut() * 2
+		+breakpoint(sm)
+			width: col(10) - gut() * 2
+	&__link
+		color: inherit
+		text-decoration: none
+		+breakpoint(sm)
+			display: flex
+		&:before
+			+stretch
+			content: ""
+			display: block
+	&__thumb
+		display: block
+		height: auto
+		width: 100%
+		+breakpoint(sm)
+			width: 40%
+	&__title
+		@extend %reset
+		$fs: 30
+		font: bold em($fs) $sans
+		line-height: em(36, $fs)
+		padding: em(25, $fs)
+		+breakpoint(sm)
+			font-size: em(16, $xs)
+
+//
+
+.bloggers
+	@extend %max-width
+	&__bio
+		@extend %reset
+		align-items: flex-start
+		display: flex
+		margin: em(100) auto
+		img
+			height: auto
+			margin: 0 gut()
+			width: col(4) - gut() * 2
+		+breakpoint(sm)
+			display: block
+			margin-left: (col() + gut())
+			margin-right: (col() + gut())
+			img
+				margin: 0
+				width: 100%
+	&__content
+		@extend .article__body
+		width: col(8) - gut() * 2
+		+breakpoint(sm)
+			margin: em(30) 0 0
+			width: auto
+	&__social
+		font-size: .5em
+		justify-content: flex-start
+		.menu-item
+			margin-right: 2em
+
+//
+
+.others
+	margin: em(200) 0
+	+breakpoint(sm)
+		display: none
+	&__heading
+		@extend %reset
+		$fs: 66
+		font: bold em($fs) $sans
+		line-height: em(86, $fs)
+		margin: 0 gut() em(10, $fs)
+		text-align: center
+	&__lead
+		@extend %reset
+		$fs: 36
+		font: em($fs) $sans
+		margin: em(10, $fs) gut() em(80, $fs)
+		text-align: center
+	&__bio
+		@extend %reset
+		align-items: flex-start
+		display: flex
+		margin: em(100) auto
+		.others__nav &
+			margin: em(100) gut()
+			width: col(3) - gut() * 2
+	&__meta
+		@extend %clearfix
+		height: auto
+		margin: 0 gut()
+		position: relative
+		width: col(3) - gut() * 2
+		.others__nav &
+			cursor: pointer
+			margin: 0
+			width: 100%
+		img
+			display: block
+			height: auto
+			width: 100%
+	&__content
+		@extend .article__body
+		width: col(9) - gut() * 2
+		.others__nav &
+			display: none
+	&__name
+		@extend %reset
+		font: bold em(30) $sans
+		margin: 1em 0
+		text-transform: uppercase
+	&__posts-link
+		$fs: 21
+		background: $metal
+		color: #fff
+		float: left
+		font: bold em($fs) $sans
+		letter-spacing: .2em
+		line-height: em(60, $fs)
+		margin-right: .5em
+		padding: 0 .8em
+		position: relative
+		text-decoration: none
+		text-transform: uppercase
+		z-index: 5
+	&__links
+		float: left
+		position: relative
+		z-index: 5
+	&__nav
+		align-items: flex-start
+		display: flex
+		justify-content: space-around
+
+	// @for $i from 1 through 6
+	// 	&--show-#{$i}
+	// 		.others__body .others__bio:nth-child(#{$i})
+	// 			display: flex
+	// 		.others__nav .others__meta:nth-child(#{$i})
+	// 			display: none
+
+
+//
+
+.nav-links
+	color: rgba($metal, .4)
+	display: block
+	font: bold em(24) $sans
+	letter-spacing: .2em
+	margin: em(100, 24) gut() em(150, 24)
+	position: relative
+	text-align: center
+	text-transform: uppercase
+	a
+		color: $metal
+		text-decoration: none
+	a, span
+		margin: 0 .5em
+	.nav-links__more
+		display: block
+		margin: 0
+		&:after
+			background: url(../img/arrow.svg) no-repeat center
+			content: ""
+			display: block
+			height: em(17, 24)
+			margin-top: 1em
+	&--wait
+		.nav-links__more
+			pointer-events: none
+			visibility: hidden
+		.wait
+			display: block
+			height: 200px
+			left: 50%
+			pointer-events: none
+			position: absolute
+			top: 50%
+			transform: translate(-50%, -50%) scale(.3)
+			width: 200px
+			&:before,
+			&:after
+				animation: ripple 2s ease-out infinite
+				border-radius: 50%
+				border-style: solid
+				border-width: 12px
+				box-sizing: border-box
+				content: ""
+				height: 0
+				left: 50%
+				margin: 0
+				opacity: 0
+				position: absolute
+				top: 50%
+				width: 0
+			&:before
+				border-color: #cec9c9
+			&:after
+				animation-delay: 1s
+				border-color: #3c302e
+
+@keyframes ripple
+  0%
+    height: 0
+    margin: 0 0 0 0
+    opacity: 0
+    width: 0
+  33%
+    height: 44%
+    margin: -22% 0 0 -22%
+    opacity: 1
+    width: 44%
+  100%
+    height: 88%
+    margin: -44% 0 0 -44%
+    opacity: 0
+    width: 88%
+
+//
+
+.news
+	@extend %reset
+	background: $metal
+	color: #fff
+	left: 0
+	padding: em(75)
+	position: fixed
+	top: 15%
+	transition: transform .3s ease-out
+	+breakpoint(sm)
+		margin: em(40) (col() + gut()) 0
+		padding: 0
+		position: static
+	&--closed
+		transform: translateX(-95%)
+		+breakpoint(sm)
+			transform: none
+	&__wrap
+		@extend %reset
+		border: 0 none
+		box-sizing: content-box
+		width: em(515)
+		+breakpoint(sm)
+			width: auto
+	&__title
+		display: none
+		font: bold em(27) $sans
+		+breakpoint(sm)
+			display: block
+	&__label
+		display: block
+		font: bold em(36) $sans
+		margin-bottom: 2em
+		width: 60%
+		+breakpoint(sm)
+			display: none
+	&__input
+		@extend %reset
+		display: block
+		font: bold em(36) $sans
+		padding: .5em
+		width: 100%
+		+breakpoint(sm)
+			font-size: em(27)
+			margin-top: 1em
+	&__submit
+		@extend %reset-button
+		background: $metal
+		border: 1px solid #fff
+		color: #fff
+		display: block
+		font: bold em(36) $sans
+		line-height: 2em
+		margin-top: 1.5em
+		padding: 0 1em
+		+breakpoint(sm)
+			display: none
+	&__close
+		@extend %reset-button
+		bottom: 0
+		color: #fff
+		display: block
+		font: bold em(24) $sans
+		padding: .8em 1em
+		position: absolute
+		right: 0
+		transition: opacity .3s ease-out
+		.news--closed &
+			opacity: 0
+			pointer-events: none
+
+//
+
+.screen-reader-text
+	@extend %reset
+	font: 0/0 serif

@@ -1,0 +1,60 @@
+{
+  "name": "desenroladas",
+  "version": "1.0.0",
+  "description": "Desenroladas WP Theme static source",
+  "config": {
+    "src": ".",
+    "dist": ".."
+  },
+  "scripts": {
+    "css:dev": "run-s sass:dev postcss:dev -s",
+    "css:prod": "run-s sass:prod postcss:prod -s",
+    "css:watch": "chokidar $npm_package_config_src/assets/css/**/*.sass -c 'npm run css:dev -s'",
+    "sass": "node-sass $npm_package_config_src/assets/css -o $npm_package_config_dist/assets/css",
+    "sass:dev": "npm run sass -s -- --source-map-embed",
+    "sass:prod": "npm run sass -s -- --output-style compressed",
+    "postcss": "postcss $npm_package_config_dist/assets/css/*.css -r",
+    "postcss:dev": "npm run postcss -s -- -u autoprefixer",
+    "postcss:prod": "npm run postcss -s -- --no-map -u autoprefixer cssnano",
+    "img:dev": "copyup $npm_package_config_src/assets/img/** $npm_package_config_dist/assets",
+    "img:prod": "npm run img:dev -s && imagemin $npm_package_config_dist/assets/img/* -o $npm_package_config_dist/assets/img",
+    "img:watch": "chokidar $npm_package_config_src/assets/img/** -c 'npm run img:dev -s'",
+    "js:dev": "webpack $npm_package_config_src/assets/js/entry.js $npm_package_config_dist/assets/js/app.js",
+    "js:prod": "npm run js:dev -s -- -p --env.production",
+    "js:watch": "chokidar $npm_package_config_src/assets/js/** -c 'npm run js:dev -s'",
+    "icons": "node webfonts.js",
+    "icons:watch": "chokidar $npm_package_config_src/assets/icons/** -c 'npm run icons -s'",
+    "server": "browser-sync start -c bs-config.js",
+    "dev": "npm run icons -s && run-p css:dev img:dev js:dev -s",
+    "build": "npm run icons -s && run-p css:prod img:prod js:prod -s",
+    "start": "npm run dev -s && run-p server *:watch -s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdourado/desenroladas.com.br.git"
+  },
+  "author": "Rafael Dourado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rdourado/desenroladas.com.br/issues"
+  },
+  "homepage": "https://github.com/rdourado/desenroladas.com.br#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-latest": "^6.24.0",
+    "browser-sync": "^2.18.8",
+    "chokidar-cli": "^1.2.0",
+    "copyfiles": "^1.2.0",
+    "cssnano": "^3.10.0",
+    "imagemin-cli": "^3.0.0",
+    "imagesloaded": "^4.1.1",
+    "masonry-layout": "^4.1.1",
+    "node-sass": "^4.5.0",
+    "npm-run-all": "^4.0.2",
+    "postcss-cli": "^3.0.0",
+    "webfonts-generator": "^0.4.0",
+    "webpack": "^2.2.1"
+  }
+}
