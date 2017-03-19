@@ -2,11 +2,8 @@
 
 $date_format = get_option( 'date_format' );
 
-if ( function_exists( 'acf_set_options_page_menu' ) )
-	acf_set_options_page_menu( 'Destaques' );
-
-if ( function_exists( 'acf_set_options_page_title' ) )
-	acf_set_options_page_title( 'Destaques' );
+if ( function_exists( 'acf_add_options_page' ) )
+	acf_add_options_page( 'Destaques' );
 
 // Setup
 
@@ -68,7 +65,7 @@ function my_scripts() {
 
 	wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() . '/js/scripts.min.js', array( 'jquery' ), filemtime( TEMPLATEPATH . '/js/scripts.min.js' ), true );
 	// wp_enqueue_script( 'diario', 'http://blogs.diariodonordeste.com.br/barra/js/barra-diario.min.js', array( 'scripts' ), null, true );
-	wp_enqueue_script( 'tribuna', 'http://afiliados.tribunadoceara.com.br/js/barra_afiliados_v2.js', array( 'scripts' ), null, true );
+	// wp_enqueue_script( 'tribuna', 'http://afiliados.tribunadoceara.com.br/js/barra_afiliados_v2.js', array( 'scripts' ), null, true );
 }
 
 
