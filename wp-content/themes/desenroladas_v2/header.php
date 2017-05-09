@@ -6,20 +6,8 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class( 'layout' ); ?>>
-		<!-- <div class="grid">
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-			<div class="grid__col"></div>
-		</div> -->
+		<?php echo get_theme_mod( 'facebook_sdk' ); ?>
+
 		<header class="head layout__head">
 			<div class="head__wrap">
 				<?php get_search_form(); ?>

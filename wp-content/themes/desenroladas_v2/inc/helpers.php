@@ -68,6 +68,26 @@ function my_related_query() {
 	return new WP_Query( $args );
 }
 
+function my_trending_query() {
+	$args = array();
+	$sticky = get_option( 'sticky_posts' );
+	rsort( $sticky );
+
+	if ( empty( $sticky ) ) {
+		$args = array(
+			'posts_per_page' => 4,
+			'ignore_sticky_posts' => 1
+		);
+	} else {
+		$args = array(
+			'post__in' => $sticky,
+			'ignore_sticky_posts' => 1
+		);
+	}
+
+	return new WP_Query( $args );
+}
+
 function my_social_menu( $css_class ) {
 	$facebook  = get_theme_mod( 'facebook_url' );
 	$twitter   = get_theme_mod( 'twitter_url' );

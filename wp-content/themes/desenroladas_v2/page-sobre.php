@@ -60,8 +60,8 @@ Template name: Sobre nós
 			<?php $users = my_users( 'contributor' ); ?>
 			<?php if ( ! empty( $users ) ) : ?>
 			<footer class="others others--show-1">
-				<h3 class="others__heading">Colaboradores</h3>
-				<p class="others__lead">Para um conteúdo mais completo, contamos com a ajuda de vários colaboradores importantes.</p>
+				<h3 class="others__heading"><?php _( 'Colaboradores', 'desenroladas' ); ?></h3>
+				<p class="others__lead"><?php _e( 'Para um conteúdo mais completo, contamos com a ajuda de vários colaboradores importantes.', 'desenroladas' ); ?></p>
 				<div class="others__body">
 				</div>
 				<div class="others__nav">

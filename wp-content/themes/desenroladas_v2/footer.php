@@ -7,7 +7,7 @@
 				</h4>
 				<?php my_menu( 'footer', 'nav-foot foot__nav' ); ?>
 				<?php my_social_menu( 'social foot__social' ); ?>
-				<form action="" method="post" class="news">
+				<form action="" method="post" class="news news--closed">
 					<fieldset class="news__wrap">
 						<legend class="news__title"><?php _e( 'Assine nossa newsletter!', 'desenroladas' ); ?></legend>
 						<label for="email" class="news__label"><?php _e( 'Para novidades e atualizações, assine nossa newsletter!', 'desenroladas' ); ?></label>

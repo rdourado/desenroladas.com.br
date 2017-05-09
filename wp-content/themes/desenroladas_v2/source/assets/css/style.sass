@@ -4,10 +4,10 @@
 
 $metal: #1d1d1b
 $radar: #afbf91
-$viagem: #95b7a4
-$musica: #aedad9
-$cultura: #deb8d8
-$estilo: #e6a1a1
+$moda: #95b7a4
+$cultura: #aedad9
+$viagens: #deb8d8
+$feminismo: #e6a1a1
 $beleza: #fbbe62
 $sans: Ubuntu, sans-serif
 $base-font-size: 16px
@@ -48,6 +48,11 @@ $xs: 10px
 			@content
 	@elseif $bp = xl
 		@media (max-width: 1681px)
+			@content
+
+=hack($browser)
+	@if $browser == firefox
+		@supports (-moz-appearance:meterbar)
 			@content
 
 =stretch($top: 0, $right: 0, $bottom: 0, $left: 0)
@@ -119,15 +124,16 @@ body
 		font-size: $xs
 	&.single,
 	&.category
-		background: rgba($viagem, 0.5)
+		background: rgba($moda, 0.5)
 		&.category-radar
 			background: rgba($radar, 0.5)
-		&.category-musica
-			background: rgba($musica, 0.5)
 		&.category-cultura
 			background: rgba($cultura, 0.5)
-		&.category-estilo
-			background: rgba($estilo, 0.5)
+		&.category-viagem,
+		&.category-viagens
+			background: rgba($viagens, 0.5)
+		&.category-feminismo
+			background: rgba($feminismo, 0.5)
 		&.category-beleza
 			background: rgba($beleza, 0.5)
 
@@ -461,7 +467,7 @@ body
 			line-height: em(30, $fs)
 			transition: color .25s ease-out
 			&:hover, &:focus
-				color: $viagem
+				color: $moda
 		.menu-item
 			margin: 0 col(0.2)
 			position: relative
@@ -469,15 +475,16 @@ body
 			&--radar
 				a:hover, a:focus
 					color: $radar
-			&--musica
-				a:hover, a:focus
-					color: $musica
 			&--cultura
 				a:hover, a:focus
 					color: $cultura
-			&--estilo
+			&--viagem,
+			&--viagens
 				a:hover, a:focus
-					color: $estilo
+					color: $viagens
+			&--feminismo
+				a:hover, a:focus
+					color: $feminismo
 			&--beleza
 				a:hover, a:focus
 					color: $beleza
@@ -513,26 +520,33 @@ body
 	display: flex
 	flex-wrap: wrap
 	&__item
-		background: $viagem
+		background: $moda
 		margin: 0 gut() (gut() * 2)
+		+hack(firefox)
+			margin-bottom: 30px
 		position: relative
 		width: col(4) - gut() * 2
 		+breakpoint(sm)
 			margin: 0 (col() + gut()) col()
+			+hack(firefox)
+				margin-bottom: 30px
 			width: col(10) - gut() * 2
 		.body__content &
 			margin: 0 gut(8) (gut(8) * 2)
+			+hack(firefox)
+				margin-bottom: 30px
 			width: col(4, 8) - gut(8) * 2
 			&--large
 				width: col(8, 8) - gut(8) * 2
 		&.category-radar
 			background-color: $radar
-		&.category-musica
-			background-color: $musica
 		&.category-cultura
 			background-color: $cultura
-		&.category-estilo
-			background-color: $estilo
+		&.category-viagem,
+		&.category-viagens
+			background-color: $viagens
+		&.category-feminismo
+			background-color: $feminismo
 		&.category-beleza
 			background-color: $beleza
 	&__link
@@ -589,11 +603,22 @@ body
 	&__title
 		@extend %reset
 		$fs: 30
-		background: $cultura
+		background: $moda
 		font: bold em($fs) $sans
 		line-height: em(36, $fs)
 		padding: 1em
 		width: col(2,4)
+		.trend__item.category-radar &
+			background: $radar
+		.trend__item.category-cultura &
+			background: $cultura
+		.trend__item.category-viagem &,
+		.trend__item.category-viagens &
+			background: $viagens
+		.trend__item.category-feminismo &
+			background: $feminismo
+		.trend__item.category-beleza &
+			background: $beleza
 
 //
 
@@ -698,9 +723,18 @@ body
 			height: auto
 			max-width: 100%
 			vertical-align: bottom
+		.size-medium,
+		.size-large,
 		.size-full
 			display: block
-			width: 100%
+			height: auto
+			margin-left: auto
+			margin-right: auto
+			max-width: 100%
+		.wp-caption
+			margin-left: auto
+			margin-right: auto
+			max-width: 100%
 	&__footer
 		margin: em(80) gut()
 		+breakpoint(sm)
@@ -725,6 +759,13 @@ body
 			text-decoration: none
 			&:hover, &:focus
 				text-decoration: underline
+
+.comments
+	@extend %max-width
+	margin-bottom: em(150)
+	margin-top: em(200)
+	&__body
+		margin: 0 gut()
 
 //
 
@@ -1012,7 +1053,7 @@ body
 		padding: 0
 		position: static
 	&--closed
-		transform: translateX(-95%)
+		transform: translateX(-100%)
 		+breakpoint(sm)
 			transform: none
 	&__wrap

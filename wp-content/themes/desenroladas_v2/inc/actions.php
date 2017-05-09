@@ -2,8 +2,10 @@
 
 add_action( 'after_setup_theme', 'my_setup' );
 add_action( 'wp_enqueue_scripts', 'my_scripts' );
+// add_action( 'pre_get_posts', 'my_ignore_sticky' );
 
 function my_setup() {
+	set_post_thumbnail_size( 400, 400, true );
 	add_image_size( 'my-four-cols-image', 640, 1920, false );
 	add_image_size( 'my-three-cols-image', 480, 360, true );
 	add_image_size( 'my-eight-cols-image', 1280, 640, true );
@@ -41,4 +43,10 @@ function my_scripts() {
 	);
 	wp_enqueue_style( 'my-styles', $css->uri, array(), $css->ver );
 	wp_enqueue_script( 'my-scripts', $js->uri, array(), $js->ver, true );
+}
+
+function my_ignore_sticky( $query ) {
+	if ( is_home() && $query->is_main_query() ) {
+		$query->set( 'ignore_sticky_posts', true );
+	}
 }

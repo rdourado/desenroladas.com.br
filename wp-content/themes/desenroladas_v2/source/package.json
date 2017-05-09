@@ -27,6 +27,7 @@
     "server": "browser-sync start -c bs-config.js",
     "dev": "npm run icons -s && run-p css:dev img:dev js:dev -s",
     "build": "npm run icons -s && run-p css:prod img:prod js:prod -s",
+    "watch": "run-p *:watch -s",
     "start": "npm run dev -s && run-p server *:watch -s"
   },
   "repository": {

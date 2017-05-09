@@ -31,6 +31,12 @@
 		</article>
 		<?php endwhile; ?>
 
+		<aside class="comments">
+			<div class="comments__body">
+				<div class="fb-comments" data-href="<?php the_permalink(); ?>" data-width="100%" data-numposts="5"></div>
+			</div>
+		</aside>
+
 		<?php $related = my_related_query(); ?>
 		<?php if ( $related->have_posts() ) : ?>
 		<section class="related">
@@ -39,7 +45,7 @@
 				<?php while ( $related->have_posts() ) : $related->the_post(); ?>
 				<li class="related__item">
 					<a class="related__link" href="<?php the_permalink(); ?>">
-						<?php my_thumb( 'my-three-cols-image', 'related__thumb' ); ?>
+						<?php my_thumb( 'post-thumbnail', 'related__thumb' ); ?>
 						<h4 class="related__title"><?php the_title(); ?></h4>
 					</a>
 				</li>

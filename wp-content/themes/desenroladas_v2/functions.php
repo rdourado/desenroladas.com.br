@@ -1,6 +1,8 @@
 <?php
 
-include(get_template_directory() . '/inc/helpers.php');
-include(get_template_directory() . '/inc/actions.php');
-include(get_template_directory() . '/inc/filters.php');
-include(get_template_directory() . '/inc/customizer.php');
+$dir = get_template_directory();
+
+include( "${dir}/inc/helpers.php" );
+include( "${dir}/inc/actions.php" );
+include( "${dir}/inc/filters.php" );
+include( "${dir}/inc/customizer.php" );

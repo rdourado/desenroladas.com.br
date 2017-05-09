@@ -7,7 +7,7 @@ function my_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'bloggers', array(
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => 'por Clara e Gabi Dourado',
+		// 'default'           => 'por Clara e Gabi Dourado',
 		'sanitize_callback' => '',
 	) );
 
@@ -21,7 +21,7 @@ function my_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'designer_name', array(
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => 'Layout por Studio Lilo',
+		// 'default'           => 'Layout por Studio Lilo',
 		'sanitize_callback' => '',
 	) );
 
@@ -35,7 +35,7 @@ function my_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'designer_url', array(
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => '',
+		// 'default'           => '',
 		'sanitize_callback' => '',
 	) );
 
@@ -56,7 +56,7 @@ function my_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'facebook_url', array(
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => 'http://facebook.com/desenroladas',
+		// 'default'           => 'http://facebook.com/desenroladas',
 		'sanitize_callback' => '',
 	) );
 
@@ -70,7 +70,7 @@ function my_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'twitter_url', array(
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => 'http://twitter.com/desenroladas',
+		// 'default'           => 'http://twitter.com/desenroladas',
 		'sanitize_callback' => '',
 	) );
 
@@ -84,7 +84,7 @@ function my_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'instagram_url', array(
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => 'http://instagram.com/desenroladas',
+		// 'default'           => 'http://instagram.com/desenroladas',
 		'sanitize_callback' => '',
 	) );
 
@@ -98,7 +98,7 @@ function my_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'facebook_sdk', array(
 		'type'              => 'theme_mod',
 		'capability'        => 'edit_theme_options',
-		'default'           => '',
+		// 'default'           => '',
 		'sanitize_callback' => '',
 	) );
 

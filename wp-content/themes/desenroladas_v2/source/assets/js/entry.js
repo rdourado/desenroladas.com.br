@@ -18,18 +18,14 @@
 	const usersView    = $('.others__body');
 
 	let nextPage = $('.next.page-numbers');
+	let newsVisible = !!readCookie('news-visible');
 	let msnry, nextUri, userIndex = 0;
 
 	function init() {
-		if (usersNav) {
-			trigger($('.others__bio', usersNav));
-		}
-		if (entries) {
-			setMasonry(entries, '.entries__item');
-		}
-		if (nextPage) {
-			setNav(nextPage);
-		}
+		if (usersNav) trigger($('.others__bio', usersNav));
+		if (entries) setMasonry(entries);
+		if (nextPage) setNav(nextPage);
+		if (newsVisible) showNews();
 		setEvents();
 	}
 
@@ -48,9 +44,9 @@
 		});
 	}
 
-	function setMasonry(container, itemSelector) {
+	function setMasonry(container) {
 		const opts = {
-			itemSelector: itemSelector,
+			itemSelector: '.entries__item',
 			percentPosition: true
 		};
 		imagesLoaded(container, () => msnry = new Masonry(container, opts));
@@ -84,7 +80,7 @@
 			[].forEach.call(newEntries, (el) => {
 				entries.appendChild(el);
 				msnry.appended(el);
-				msnry.layout();
+				imagesLoaded(entries, () => msnry.layout());
 			});
 		});
 	}
@@ -111,8 +107,9 @@
 	}
 
 	function showNews(event) {
-		event.preventDefault();
+		if (event) event.preventDefault();
 		news.classList.remove('news--closed');
+		createCookie('news-visible', true);
 	}
 
 	function hideNews(event) {
@@ -121,6 +118,7 @@
 			event.stopPropagation();
 		}
 		news.classList.add('news--closed');
+		eraseCookie('news-visible');
 	}
 
 	function showUser(event) {
@@ -144,14 +142,9 @@
 
 })();
 
-function trigger(el) {
-	const event = new MouseEvent('click', {
-		'view': window,
-		'bubbles': true,
-		'cancelable': true
-	});
-	el.dispatchEvent(event);
-}
+//
+// Framework
+//
 
 function closest(el, selector) {
 	const match = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
@@ -167,13 +160,18 @@ function closest(el, selector) {
 	return el;
 }
 
-function insertAt(parent, child, index = 0) {
-	const children = parent.children;
-	if (index >= children.length) {
-		return parent.appendChild(child);
-	} else {
-		return parent.insertBefore(child, children[index]);
+function createCookie(name, value, days = .5) {
+	let expires = "";
+	if (days) {
+		const date = new Date();
+		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+		expires = "; expires=" + date.toGMTString();
 	}
+	document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function eraseCookie(name) {
+	createCookie(name, '', -1);
 }
 
 function get(url, cb) {
@@ -187,4 +185,37 @@ function get(url, cb) {
 		}
 	};
 	request.send();
+}
+
+function insertAt(parent, child, index = 0) {
+	const children = parent.children;
+	if (index >= children.length) {
+		return parent.appendChild(child);
+	} else {
+		return parent.insertBefore(child, children[index]);
+	}
+}
+
+function readCookie(name) {
+	const nameEQ = `${name}=`;
+	const ca = document.cookie.split(';');
+	for (let i = ca.length - 1; i >= 0; i--) {
+		let c = ca[i];
+		while (c.charAt(0) === ' ') {
+			c = c.substring(1, c.length);
+		}
+		if (c.indexOf(nameEQ) === 0) {
+			return c.substring(nameEQ.length, c.length);
+		}
+	}
+	return null;
+}
+
+function trigger(el) {
+	const event = new MouseEvent('click', {
+		'view': window,
+		'bubbles': true,
+		'cancelable': true
+	});
+	el.dispatchEvent(event);
 }

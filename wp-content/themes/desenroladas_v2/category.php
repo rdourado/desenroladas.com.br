@@ -17,34 +17,24 @@
 			</article>
 			<?php endwhile; ?>
 		</section>
+
+		<?php $trend = my_trending_query(); ?>
+		<?php if ( $trend->have_posts() ) : ?>
 		<aside class="trend body__sidebar">
-			<h3 class="trend__heading">Trending</h3>
+			<h3 class="trend__heading"><?php _e( 'Trending', 'desenroladas' ); ?></h3>
 			<ul class="trend__list">
-				<li class="trend__item">
-					<a class="trend__link" href="">
-						<div class="trend__thumb" style="background-image: url(https://dummyimage.com/400x400);"></div>
-						<h4 class="trend__title">Viagem por Londres: 4 locais geek para visitar na capital da Inglaterra.</h4>
+				<?php while ( $trend->have_posts() ) : $trend->the_post(); ?>
+				<li <?php post_class( 'trend__item' ); ?>>
+					<a class="trend__link" href="<?php the_permalink(); ?>">
+						<div class="trend__thumb" style="background-image: url(<?php the_post_thumbnail_url( 'post-thumbnail' ); ?>);"></div>
+						<h4 class="trend__title"><?php the_title(); ?></h4>
 					</a>
 				</li>
-				<li class="trend__item">
-					<a class="trend__link" href="">
-						<div class="trend__thumb" style="background-image: url(https://dummyimage.com/400x400);"></div>
-						<h4 class="trend__title">Estrelas Além do Tempo: um filme necessário.</h4>
-					</a>
-				</li>
-				<li class="trend__item">
-					<a class="trend__link" href="">
-						<div class="trend__thumb" style="background-image: url(https://dummyimage.com/400x400);"></div>
-						<h4 class="trend__title">O que você deixou de consumir em 2016?</h4>
-					</a>
-				</li>
-				<li class="trend__item">
-					<a class="trend__link" href="">
-						<div class="trend__thumb" style="background-image: url(https://dummyimage.com/400x400);"></div>
-						<h4 class="trend__title">Conheça o Rodapet: projeto que ajuda a melhorar a qualidade de vida de cães…</h4>
-				</a></li>
+				<?php endwhile; ?>
 			</ul>
 		</aside>
+		<?php endif; ?>
+
 	</div>
 </main>
 <?php get_footer(); ?>
